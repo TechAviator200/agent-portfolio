@@ -197,31 +197,38 @@ export default function Page() {
             </div>
 
             {/* Actions */}
-            <div className="mt-8 flex flex-wrap gap-4">
-              {isLive ? (
-                <a
-                  href={agent.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#3dd9d9] px-6 py-3 text-sm font-semibold text-[#1a1f2e] transition-all hover:bg-[#2bc4c4] hover:shadow-lg hover:shadow-[#3dd9d9]/25 active:scale-[0.98]"
+            <div className="mt-8 flex flex-col gap-3">
+              <div className="flex flex-wrap gap-4">
+                {isLive ? (
+                  <a
+                    href={agent.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#3dd9d9] px-6 py-3 text-sm font-semibold text-[#1a1f2e] transition-all hover:bg-[#2bc4c4] hover:shadow-lg hover:shadow-[#3dd9d9]/25 active:scale-[0.98]"
+                  >
+                    Launch Demo
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm text-zinc-400">
+                    <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-500"></span>
+                    Demo deploying
+                  </span>
+                )}
+                <Link
+                  href="/projects#contact"
+                  className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-[#3dd9d9] hover:text-[#3dd9d9] active:scale-[0.98]"
                 >
-                  Launch Demo
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm text-zinc-400">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-500"></span>
-                  Demo deploying
-                </span>
+                  Get in Touch
+                </Link>
+              </div>
+              {!isLive && (
+                <p className="text-sm text-zinc-500">
+                  Adina is deploying today — demo link will be added shortly.
+                </p>
               )}
-              <Link
-                href="/projects#contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-[#3dd9d9] hover:text-[#3dd9d9] active:scale-[0.98]"
-              >
-                Get in Touch
-              </Link>
             </div>
           </div>
         </div>

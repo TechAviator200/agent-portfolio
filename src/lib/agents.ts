@@ -16,7 +16,7 @@ export const agents: Agent[] = [
     title: "RadioBoy",
     description: "AI-powered audio streaming agent that curates and delivers personalized radio experiences.",
     tags: ["audio", "streaming", "personalization"],
-    demoUrl: process.env.NEXT_PUBLIC_RADIOBOY_URL || "#",
+    demoUrl: "https://radio-boy.onrender.com/",
     bullets: [
       "Real-time audio stream curation",
       "Listener preference learning",
@@ -30,7 +30,7 @@ export const agents: Agent[] = [
     title: "Adina Outreach Agent",
     description: "Automated outreach agent that manages personalized communication campaigns at scale.",
     tags: ["outreach", "communication", "automation"],
-    demoUrl: process.env.NEXT_PUBLIC_ADINA_OUTREACH_URL || "#",
+    demoUrl: "#",
     bullets: [
       "Multi-channel campaign orchestration",
       "Personalized message generation",
@@ -44,7 +44,7 @@ export const agents: Agent[] = [
     title: "Edge Health",
     description: "Health monitoring agent that runs diagnostics and reports on edge infrastructure status.",
     tags: ["health", "monitoring", "edge"],
-    demoUrl: process.env.NEXT_PUBLIC_EDGE_HEALTH_URL || "#",
+    demoUrl: "https://edgefhir-relay.vercel.app/",
     bullets: [
       "Real-time infrastructure diagnostics",
       "Anomaly detection and alerting",

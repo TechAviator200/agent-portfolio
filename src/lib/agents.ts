@@ -30,7 +30,7 @@ export const agents: Agent[] = [
     title: "Adina Outreach Agent",
     description: "Automated outreach agent that manages personalized communication campaigns at scale.",
     tags: ["outreach", "communication", "automation"],
-    demoUrl: "#",
+    demoUrl: "https://adina-bot.onrender.com/",
     bullets: [
       "Multi-channel campaign orchestration",
       "Personalized message generation",

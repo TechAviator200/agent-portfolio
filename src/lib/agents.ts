@@ -1,5 +1,5 @@
 export type Agent = {
-  slug: "radioboy" | "adina-outreach" | "edge-health";
+  slug: "radioboy" | "adina-outreach" | "edge-health" | "overit";
   category: "media-entertainment" | "healthcare" | "enterprise";
   title: string;
   description: string;
@@ -7,6 +7,8 @@ export type Agent = {
   demoUrl: string;
   bullets: string[];
   architecture: string;
+  github?: string;
+  stack?: string[];
 };
 
 export const agents: Agent[] = [
@@ -23,6 +25,23 @@ export const agents: Agent[] = [
       "Cross-platform delivery",
     ],
     architecture: "Next.js + streaming API + edge workers",
+  },
+  {
+    slug: "overit",
+    category: "media-entertainment",
+    title: "OverIt",
+    description:
+      "AI-assisted dating app prototype built with Next.js and Supabase. Features swipe discovery, curated Daily Drop matches, real-time messaging, and AI conversation suggestions.",
+    tags: ["dating", "AI", "real-time", "Supabase"],
+    demoUrl: "https://overit-dating-app.vercel.app",
+    github: "https://github.com/TechAviator200/overit-dating-app",
+    stack: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Postgres"],
+    bullets: [
+      "Swipe-based discovery with AI-powered match scoring",
+      "Daily Drop curated match recommendations",
+      "Real-time messaging with AI conversation suggestions",
+    ],
+    architecture: "Next.js + Supabase Realtime + Postgres + AI suggestions layer",
   },
   {
     slug: "adina-outreach",

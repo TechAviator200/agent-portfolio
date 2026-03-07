@@ -1,5 +1,5 @@
 export type Agent = {
-  slug: "radioboy" | "adina-outreach" | "edge-health" | "overit";
+  slug: "radioboy" | "adina-outreach" | "edge-health" | "overit" | "centi-tmf";
   category: "media-entertainment" | "healthcare" | "enterprise";
   title: string;
   description: string;
@@ -8,7 +8,9 @@ export type Agent = {
   bullets: string[];
   architecture: string;
   github?: string;
+  apiDocsUrl?: string;
   stack?: string[];
+  badges?: string[];
 };
 
 export const agents: Agent[] = [
@@ -56,6 +58,27 @@ export const agents: Agent[] = [
       "Response tracking and follow-ups",
     ],
     architecture: "Next.js + message queue + CRM integration",
+  },
+  {
+    slug: "centi-tmf",
+    category: "healthcare",
+    title: "centiTMF",
+    description:
+      "AI-powered TMF analysis system that predicts regulatory inspection risk, detects missing artifacts, and analyzes protocol deviations across clinical trial sites.",
+    tags: ["Healthcare AI", "Clinical Trials", "Regulatory", "AI Agent"],
+    demoUrl: "https://centi-tmf-agent.vercel.app",
+    github: "https://github.com/TechAviator200/centiTMF-agent",
+    apiDocsUrl: "https://centitmf-agent.onrender.com/docs",
+    badges: ["Production Deployment", "AI Agent", "Healthcare AI"],
+    stack: ["FastAPI", "Next.js", "Supabase", "Cloudflare R2", "OpenAI GPT-4o", "Docker", "Render", "Vercel"],
+    bullets: [
+      "TMF artifact classification and completeness analysis",
+      "Protocol deviation detection across trial sites",
+      "Site-level inspection risk scoring",
+      "Inspection simulation engine",
+      "Audit question copilot",
+    ],
+    architecture: "FastAPI + Next.js + Supabase Postgres + Cloudflare R2 + OpenAI GPT-4o",
   },
   {
     slug: "edge-health",

@@ -81,12 +81,12 @@ export default function Home() {
           </svg>
 
           <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-            <span className="text-white">APPLIED AI</span>
+            <span className="text-white">AI PRODUCT</span>
             <br />
             <span className="text-[#3dd9d9]">ENGINEER</span>
           </h1>
 
-          <p className="mb-6 text-xl text-zinc-200">I build worlds and everything in between</p>
+          <p className="mb-6 text-xl text-zinc-200">Building agentic systems, workflow automation, and applied AI products across media & entertainment, enterprise, and healthcare & life sciences.</p>
 
           <Link
             href="/projects"
@@ -217,7 +217,7 @@ export default function Home() {
             </svg>
 
             <p className="mb-4 leading-relaxed text-zinc-300">
-              I build intelligent AI agents that solve real-world problems across media, enterprise, and healthcare domains. With expertise in applied machine learning and software engineering, I create systems that augment human capabilities and automate complex workflows.
+              I build AI-powered products and agentic systems that solve real problems across media & entertainment, enterprise, and healthcare & life sciences. I design and ship end-to-end systems—from agent architecture to production deployment—that automate complex workflows and deliver measurable outcomes.
             </p>
             <p className="mb-6 leading-relaxed text-zinc-300">
               My focus is on practical AI solutions—agents that understand context, learn from interactions, and deliver measurable value...

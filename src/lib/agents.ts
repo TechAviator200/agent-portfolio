@@ -1,5 +1,5 @@
 export type Agent = {
-  slug: "radioboy" | "adina-outreach" | "edge-health" | "overit" | "centi-tmf";
+  slug: "radioboy" | "adina-outreach" | "edge-health" | "overit" | "centi-tmf" | "labflow-ai";
   category: "media-entertainment" | "healthcare" | "enterprise";
   title: string;
   description: string;
@@ -79,6 +79,27 @@ export const agents: Agent[] = [
       "Audit question copilot",
     ],
     architecture: "FastAPI + Next.js + Supabase Postgres + Cloudflare R2 + OpenAI GPT-4o",
+  },
+  {
+    slug: "labflow-ai",
+    category: "healthcare",
+    title: "LabFlow AI",
+    description:
+      "AI workflow copilot that converts unstructured scientific SOPs into structured, traceable, semantic-ready experiment records — with human-in-the-loop review and full auditability.",
+    tags: ["AI", "Biotech", "Workflow Automation", "FastAPI", "Next.js", "Semantic Data", "Human-in-the-Loop"],
+    demoUrl: "https://lab-flow-ai.vercel.app/",
+    github: "https://github.com/TechAviator200/LabFlowAI",
+    badges: ["Live Demo", "Biotech AI", "Workflow Automation"],
+    stack: ["Next.js", "FastAPI", "Supabase", "OpenAI-compatible LLM", "Vercel", "Render"],
+    bullets: [
+      "Converts unstructured SOPs into structured, step-by-step workflows",
+      "Extracts materials, parameters, and expected outputs per step",
+      "Flags ambiguities and missing metadata for human review",
+      "Human-in-the-loop review layer with inline annotation support",
+      "Maintains full auditability and workflow traceability",
+      "Semantic-ready output compatible with knowledge-graph pipelines",
+    ],
+    architecture: "FastAPI + Next.js + Supabase + OpenAI-compatible LLM + Vercel + Render",
   },
   {
     slug: "edge-health",

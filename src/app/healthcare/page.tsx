@@ -78,8 +78,8 @@ export default function Page() {
             Back to Projects
           </Link>
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-            <span className="text-white">Healthcare / </span>
-            <span className="text-[#3dd9d9]">HealthTech</span>
+            <span className="text-white">Healthcare & </span>
+            <span className="text-[#3dd9d9]">Life Sciences</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-zinc-300">
             Agents for clinical triage, interoperability, and structured healthcare workflows.

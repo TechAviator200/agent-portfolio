@@ -210,7 +210,7 @@ export default function Page() {
               src="https://www.loom.com/embed/f26581ecf65b4368b5d5f3e9c61d7ca0"
               frameBorder="0"
               allowFullScreen
-              allow="fullscreen"
+              allow="autoplay; fullscreen; picture-in-picture"
               className="absolute inset-0 h-full w-full"
               title="centiTMF — AI Inspection Readiness Demo"
             />

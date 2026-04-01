@@ -196,7 +196,7 @@ export default function Page() {
               src="https://www.loom.com/embed/56d8e031b4004d2f83a840e2467acf1e"
               frameBorder="0"
               allowFullScreen
-              allow="fullscreen"
+              allow="autoplay; fullscreen; picture-in-picture"
               className="absolute inset-0 h-full w-full"
               title="Adina Outreach — AI Campaign Execution Demo"
             />

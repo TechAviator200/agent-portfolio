@@ -210,7 +210,7 @@ export default function Page() {
               src="https://www.loom.com/embed/50db14cfad9e4cdb8829be56bd9ae5ab"
               frameBorder="0"
               allowFullScreen
-              allow="fullscreen"
+              allow="autoplay; fullscreen; picture-in-picture"
               className="absolute inset-0 h-full w-full"
               title="EdgeFHIR — AI Healthcare Workflow Demo"
             />

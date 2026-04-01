@@ -13,30 +13,19 @@ export default function Page() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern
-            id="centi-tmf-doodles"
-            width="200"
-            height="200"
-            patternUnits="userSpaceOnUse"
-          >
-            {/* Clipboard / document */}
+          <pattern id="centi-tmf-doodles" width="200" height="200" patternUnits="userSpaceOnUse">
             <rect x="20" y="20" width="30" height="40" stroke="#3dd9d9" strokeWidth="1" fill="none" />
             <rect x="27" y="15" width="16" height="10" stroke="#3dd9d9" strokeWidth="0.5" fill="none" />
             <path d="M25 32 L45 32 M25 38 L42 38 M25 44 L45 44 M25 50 L38 50" stroke="#3dd9d9" strokeWidth="0.5" />
-            {/* Magnifying glass */}
             <circle cx="150" cy="40" r="12" stroke="#3dd9d9" strokeWidth="1" fill="none" />
             <path d="M159 49 L168 58" stroke="#3dd9d9" strokeWidth="1.5" strokeLinecap="round" />
-            {/* Shield / compliance */}
             <path d="M90 80 Q90 70 100 70 Q110 70 110 80 L110 95 Q110 105 100 110 Q90 105 90 95 Z" stroke="#3dd9d9" strokeWidth="1" fill="none" />
             <path d="M95 90 L99 95 L107 84" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* DNA / clinical */}
             <path d="M160 80 Q170 85 160 90 Q150 95 160 100 Q170 105 160 110 Q150 115 160 120" stroke="#3dd9d9" strokeWidth="1" fill="none" />
             <path d="M165 80 Q155 85 165 90 Q175 95 165 100 Q155 105 165 110 Q175 115 165 120" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Risk gauge */}
             <path d="M25 150 A20 20 0 0 1 65 150" stroke="#3dd9d9" strokeWidth="1" fill="none" />
             <path d="M45 150 L45 132" stroke="#3dd9d9" strokeWidth="1" />
             <circle cx="45" cy="150" r="3" fill="#3dd9d9" opacity="0.5" />
-            {/* Network dots */}
             <circle cx="130" cy="160" r="4" stroke="#3dd9d9" strokeWidth="1" fill="none" />
             <circle cx="155" cy="148" r="4" stroke="#3dd9d9" strokeWidth="1" fill="none" />
             <circle cx="175" cy="165" r="4" stroke="#3dd9d9" strokeWidth="1" fill="none" />
@@ -48,19 +37,11 @@ export default function Page() {
 
       {/* Navigation */}
       <nav className="relative z-10 flex items-center justify-between px-8 py-6">
-        <Link href="/" className="text-xl font-bold text-white">
-          Portfolio
-        </Link>
+        <Link href="/" className="text-xl font-bold text-white">Portfolio</Link>
         <div className="flex items-center gap-8">
-          <Link href="/" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Home
-          </Link>
-          <Link href="/projects" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Projects
-          </Link>
-          <Link href="/projects#contact" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Contact
-          </Link>
+          <Link href="/" className="text-sm text-zinc-300 transition-colors hover:text-white">Home</Link>
+          <Link href="/projects" className="text-sm text-zinc-300 transition-colors hover:text-white">Projects</Link>
+          <Link href="/projects#contact" className="text-sm text-zinc-300 transition-colors hover:text-white">Contact</Link>
         </div>
       </nav>
 
@@ -81,11 +62,8 @@ export default function Page() {
           {/* Left — Illustration */}
           <div className="flex items-center justify-center rounded-2xl bg-white p-8">
             <svg viewBox="0 0 300 280" fill="none" className="h-full w-full max-w-md">
-              {/* Background accents */}
               <circle cx="260" cy="40" r="30" fill="#3dd9d9" opacity="0.08" />
               <circle cx="40" cy="240" r="25" fill="#3dd9d9" opacity="0.08" />
-
-              {/* Large document / TMF binder */}
               <rect x="40" y="50" width="90" height="130" rx="4" fill="#2a3142" />
               <rect x="44" y="54" width="82" height="122" rx="2" fill="#1a1f2e" />
               <rect x="50" y="62" width="70" height="8" rx="1" fill="#3dd9d9" opacity="0.3" />
@@ -98,8 +76,6 @@ export default function Page() {
               <rect x="50" y="133" width="65" height="6" rx="1" fill="#3dd9d9" opacity="0.15" />
               <circle cx="105" cy="150" r="10" fill="#ff9f43" opacity="0.9" />
               <path d="M105 144 L105 151 M105 154 L105 155" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-
-              {/* AI analysis panel */}
               <rect x="150" y="40" width="110" height="80" rx="6" fill="white" stroke="#e5e5e5" strokeWidth="1.5" />
               <rect x="158" y="48" width="94" height="55" rx="3" fill="#e8f5f5" />
               <path d="M175 90 A22 22 0 0 1 220 90" stroke="#e5e5e5" strokeWidth="4" fill="none" strokeLinecap="round" />
@@ -110,8 +86,6 @@ export default function Page() {
               <rect x="249" y="60" width="8" height="35" rx="1" fill="#ff9f43" opacity="0.7" />
               <rect x="225" y="75" width="8" height="20" rx="1" fill="#3dd9d9" opacity="0.3" />
               <path d="M130 90 L150 75" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="4 3" />
-
-              {/* Output / report panel */}
               <rect x="150" y="140" width="110" height="70" rx="6" fill="white" stroke="#e5e5e5" strokeWidth="1.5" />
               <rect x="158" y="148" width="94" height="54" rx="3" fill="#f8fffe" />
               <rect x="164" y="154" width="50" height="5" rx="1" fill="#3dd9d9" opacity="0.4" />
@@ -122,8 +96,6 @@ export default function Page() {
               <path d="M237 171 L240 174 L246 168" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
               <circle cx="241" cy="180" r="4" fill="#ff9f43" opacity="0.6" />
               <path d="M205 120 L205 140" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="3 2" />
-
-              {/* Person */}
               <ellipse cx="80" cy="200" rx="18" ry="16" fill="#fbd5c8" />
               <ellipse cx="80" cy="186" rx="22" ry="14" fill="#1a3a4a" />
               <path d="M58 198 Q68 183 80 178 Q92 183 102 198" fill="#1a3a4a" />
@@ -132,12 +104,8 @@ export default function Page() {
               <path d="M98 210 L90 265" stroke="#e5e5e5" strokeWidth="1" />
               <path d="M62 220 Q48 232 40 248" stroke="#fbd5c8" strokeWidth="9" strokeLinecap="round" />
               <path d="M98 220 Q112 232 120 246" stroke="#fbd5c8" strokeWidth="9" strokeLinecap="round" />
-
-              {/* FDA badge */}
               <rect x="120" y="230" width="36" height="20" rx="4" fill="#2a3142" />
               <text x="138" y="244" textAnchor="middle" fontSize="8" fill="#3dd9d9" fontWeight="bold">FDA</text>
-
-              {/* Shield checkmark */}
               <path d="M238 210 Q238 200 248 200 Q258 200 258 210 L258 222 Q258 232 248 237 Q238 232 238 222 Z" fill="#3dd9d9" opacity="0.2" stroke="#3dd9d9" strokeWidth="1" />
               <path d="M242 218 L246 223 L254 212" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
             </svg>
@@ -148,10 +116,7 @@ export default function Page() {
             {agent.badges && (
               <div className="mb-4 flex flex-wrap gap-2">
                 {agent.badges.map((badge) => (
-                  <span
-                    key={badge}
-                    className="rounded-full bg-[#3dd9d9]/10 border border-[#3dd9d9]/30 px-3 py-1 text-xs font-medium text-[#3dd9d9]"
-                  >
+                  <span key={badge} className="rounded-full bg-[#3dd9d9]/10 border border-[#3dd9d9]/30 px-3 py-1 text-xs font-medium text-[#3dd9d9]">
                     {badge}
                   </span>
                 ))}
@@ -163,15 +128,10 @@ export default function Page() {
               <span className="text-[#3dd9d9]">TMF</span>
             </h1>
             <p className="mt-2 text-base font-medium text-zinc-400">
-              AI Inspection Readiness Agent for Clinical Trial Master Files
+              AI agent for clinical trial document review, inspection readiness, and compliance workflow support.
             </p>
-            <p className="mt-4 text-lg text-zinc-300">{agent.description}</p>
+            <p className="mt-4 text-base text-zinc-300 leading-relaxed">{agent.description}</p>
 
-            <p className="mt-4 text-sm text-zinc-500 leading-relaxed">
-              centiTMF demonstrates product judgment for structured, high-trust workflows — where auditability, usability, and operational clarity matter as much as model capability.
-            </p>
-
-            {/* Actions */}
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={agent.demoUrl}
@@ -214,16 +174,37 @@ export default function Page() {
           </div>
         </div>
 
+        {/* ── Problem / Solution / Impact ──────────────────────────────────── */}
+        <div className="mt-12 grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              label: "Problem",
+              body: "Clinical trial teams manage large volumes of essential documents across fragmented workflows. Reviewing materials manually makes it difficult to spot gaps early and stay continuously inspection-ready.",
+            },
+            {
+              label: "Solution",
+              body: "centiTMF organizes document review by surfacing missing or incomplete records, highlighting potential compliance issues, and supporting a more structured readiness workflow.",
+            },
+            {
+              label: "Impact",
+              body: "Expected to reduce the manual burden of trial document review and accelerate the process of identifying issues before audits or inspections.",
+            },
+          ].map(({ label, body }) => (
+            <div key={label} className="rounded-xl border border-zinc-700 bg-zinc-800/30 p-6">
+              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">{label}</p>
+              <p className="mt-3 text-sm text-zinc-300 leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+
         {/* ── Demo ─────────────────────────────────────────────────────────── */}
         <div className="mt-20">
           <div className="mb-6">
             <h2 className="text-2xl font-semibold text-white">See it in action</h2>
             <p className="mt-1 text-sm text-zinc-400">
-              Watch centiTMF analyze TMF risk, surface missing artifacts, and generate inspection-readiness reports in real time.
+              Watch centiTMF review trial documents, surface missing records, and generate an inspection-readiness view.
             </p>
           </div>
-
-          {/* Responsive Loom embed */}
           <div className="relative w-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 aspect-video">
             <iframe
               src="https://www.loom.com/embed/f26581ecf65b4368b5d5f3e9c61d7ca0"
@@ -234,8 +215,6 @@ export default function Page() {
               title="centiTMF — AI Inspection Readiness Demo"
             />
           </div>
-
-          {/* Fallback CTA */}
           <div className="mt-4 flex items-center gap-2">
             <a
               href="https://www.loom.com/share/f26581ecf65b4368b5d5f3e9c61d7ca0"
@@ -252,43 +231,86 @@ export default function Page() {
           </div>
         </div>
 
-        {/* ── Capabilities + Product Signal ────────────────────────────────── */}
+        {/* ── Expected Impact ──────────────────────────────────────────────── */}
+        <div className="mt-20">
+          <h2 className="text-xl font-semibold text-white">Expected Impact</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {[
+              "Flags missing or incomplete trial documentation faster than manual review",
+              "Reduces manual effort during inspection-readiness and audit preparation workflows",
+              "Supports more consistent compliance checks across document sets and trial sites",
+            ].map((item) => (
+              <div key={item} className="rounded-xl border border-zinc-700 bg-zinc-800/30 p-5">
+                <div className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#3dd9d9]" />
+                  <p className="text-sm text-zinc-200 leading-relaxed">{item}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── How It Works ─────────────────────────────────────────────────── */}
+        <div className="mt-20">
+          <h2 className="text-xl font-semibold text-white">How It Works</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { step: "01", title: "Ingest documents", body: "Upload or connect a document set or trial record collection." },
+              { step: "02", title: "Review structure", body: "Agent checks against expected documentation requirements and internal logic." },
+              { step: "03", title: "Surface gaps", body: "Flags missing, incomplete, or inconsistent artifacts with context." },
+              { step: "04", title: "Readiness view", body: "Returns a clearer picture of where the trial stands and what needs attention." },
+            ].map(({ step, title, body }) => (
+              <div key={step} className="rounded-xl border border-zinc-700 bg-zinc-800/30 p-5">
+                <span className="text-2xl font-bold text-[#3dd9d9]/25">{step}</span>
+                <p className="mt-2 text-sm font-semibold text-zinc-100">{title}</p>
+                <p className="mt-1 text-xs text-zinc-400 leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Key Capabilities + Product Signal ────────────────────────────── */}
         <div className="mt-20 grid gap-10 lg:grid-cols-2">
-          {/* Key Capabilities */}
           <div>
             <h2 className="text-xl font-semibold text-white">Key Capabilities</h2>
             <ul className="mt-4 space-y-3">
-              {agent.bullets.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-3">
+              {[
+                "Document gap detection across trial record sets",
+                "Inspection-readiness support and compliance review",
+                "Structured compliance workflow assistance",
+                "Faster issue identification before audits",
+                "Clearer visibility into documentation status",
+                "Audit question copilot for operator use",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
                   <svg className="mt-1 h-5 w-5 flex-shrink-0 text-[#3dd9d9]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-zinc-200">{bullet}</span>
+                  <span className="text-zinc-200">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Why This Matters */}
           <div>
             <h2 className="text-xl font-semibold text-white">Why this matters</h2>
             <ul className="mt-4 space-y-4">
               {[
                 {
-                  label: "Regulated workflow product thinking",
-                  detail: "Built for compliance-sensitive environments where every output must be auditable and explainable — not just accurate.",
+                  label: "Regulated workflow, not generic AI",
+                  detail: "Built for compliance-sensitive environments where outputs must be auditable, explainable, and useful to ops teams — not just accurate.",
                 },
                 {
-                  label: "Applied AI for healthcare operations",
-                  detail: "Not a generic chatbot. A structured workflow tool for document-heavy, high-stakes clinical trial work.",
+                  label: "Plain-English outputs",
+                  detail: "In regulated environments, the cost of discovering issues late is high. centiTMF moves teams from reactive cleanup toward earlier visibility.",
                 },
                 {
-                  label: "Human-legible outputs",
-                  detail: "Inspection risk scores, missing artifact detection, and audit-ready reports that ops teams can act on immediately.",
+                  label: "Structured over black-box",
+                  detail: "Every flag includes context. Operators see what was missing and why — not just a score.",
                 },
                 {
-                  label: "Product + engineering crossover",
-                  detail: "Designed and built end-to-end — from API design and data modeling to UI — demonstrating full-stack AI product judgment.",
+                  label: "Product + engineering end-to-end",
+                  detail: "Designed and built from API design to UI, demonstrating full-stack AI product judgment in a high-stakes domain.",
                 },
               ].map(({ label, detail }) => (
                 <li key={label} className="flex items-start gap-3">
@@ -303,24 +325,23 @@ export default function Page() {
           </div>
         </div>
 
-        {/* ── Tech Stack + Architecture ─────────────────────────────────────── */}
+        {/* ── Build Notes ──────────────────────────────────────────────────── */}
         <div className="mt-16 space-y-6">
           {agent.stack && (
             <div>
-              <h2 className="text-xl font-semibold text-white">Tech Stack</h2>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <h2 className="text-xl font-semibold text-white">Build Notes</h2>
+              <p className="mt-2 text-sm text-zinc-400">
+                Built for document-heavy, compliance-sensitive workflows. The product prioritizes human-legible outputs over black-box scores — every result is designed to be actioned by a clinical ops team, not just read by a developer.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
                 {agent.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-zinc-700 bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300"
-                  >
+                  <span key={tech} className="rounded-full border border-zinc-700 bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300">
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
           )}
-
           <p className="rounded-lg border border-zinc-700 bg-zinc-800/30 px-4 py-3 font-mono text-sm text-zinc-200">
             {agent.architecture}
           </p>

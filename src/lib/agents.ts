@@ -50,7 +50,7 @@ export const agents: Agent[] = [
     category: "enterprise",
     title: "Adina Outreach Agent",
     description:
-      "An AI-assisted outbound system that helps teams orchestrate personalized outreach, manage follow-ups, and scale communication workflows with more visibility and operational control.",
+      "Adina reduces the manual lift behind outbound prospecting. Instead of jumping between lead research, company context, and first-draft writing, the agent consolidates those steps into a single workflow — from lead selection to tailored outreach draft, faster.",
     tags: ["AI SDR", "Outbound Automation", "Workflow", "Enterprise AI"],
     demoUrl: "https://adina-bot.onrender.com/",
     badges: ["Live Demo", "AI Workflow", "Enterprise AI"],
@@ -70,7 +70,7 @@ export const agents: Agent[] = [
     category: "healthcare",
     title: "centiTMF",
     description:
-      "AI-powered TMF analysis system that predicts regulatory inspection risk, detects missing artifacts, and analyzes protocol deviations across clinical trial sites.",
+      "centiTMF helps clinical and operational teams identify missing, incomplete, or inconsistent trial documentation before those issues become inspection risks. It brings structure to a document-heavy compliance workflow that is often manual, time-consuming, and difficult to monitor at scale.",
     tags: ["Healthcare AI", "Clinical Trials", "Regulatory", "AI Agent"],
     demoUrl: "https://centi-tmf-agent.vercel.app",
     github: "https://github.com/TechAviator200/centiTMF-agent",
@@ -112,7 +112,7 @@ export const agents: Agent[] = [
     category: "healthcare",
     title: "Edge Health",
     description:
-      "A healthcare infrastructure agent that monitors distributed edge systems, surfaces anomalies, and supports reliable data relay and operational visibility across health integrations.",
+      "EdgeFHIR reduces the friction care teams face when patient information is spread across disconnected systems. By consolidating retrieval and summarization into a single workflow, the agent helps users get to relevant patient context faster — without repeated manual lookup.",
     tags: ["Healthcare AI", "FHIR", "Infrastructure", "AI Agent"],
     demoUrl: "https://edgefhir-relay.vercel.app/",
     badges: ["Live Demo", "Healthcare AI", "FHIR Relay"],

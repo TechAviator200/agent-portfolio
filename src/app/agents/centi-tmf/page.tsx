@@ -76,8 +76,9 @@ export default function Page() {
           Back to Healthcare
         </Link>
 
+        {/* ── Hero ─────────────────────────────────────────────────────────── */}
         <div className="grid gap-12 lg:grid-cols-2">
-          {/* Left side - Illustration */}
+          {/* Left — Illustration */}
           <div className="flex items-center justify-center rounded-2xl bg-white p-8">
             <svg viewBox="0 0 300 280" fill="none" className="h-full w-full max-w-md">
               {/* Background accents */}
@@ -87,53 +88,42 @@ export default function Page() {
               {/* Large document / TMF binder */}
               <rect x="40" y="50" width="90" height="130" rx="4" fill="#2a3142" />
               <rect x="44" y="54" width="82" height="122" rx="2" fill="#1a1f2e" />
-              {/* Document rows */}
               <rect x="50" y="62" width="70" height="8" rx="1" fill="#3dd9d9" opacity="0.3" />
               <rect x="50" y="75" width="60" height="6" rx="1" fill="#3dd9d9" opacity="0.2" />
               <rect x="50" y="85" width="65" height="6" rx="1" fill="#3dd9d9" opacity="0.2" />
               <rect x="50" y="95" width="55" height="6" rx="1" fill="#3dd9d9" opacity="0.2" />
-              {/* Divider */}
               <path d="M50 108 L110 108" stroke="#3dd9d9" strokeWidth="0.5" opacity="0.4" />
               <rect x="50" y="113" width="70" height="6" rx="1" fill="#3dd9d9" opacity="0.15" />
               <rect x="50" y="123" width="58" height="6" rx="1" fill="#3dd9d9" opacity="0.15" />
               <rect x="50" y="133" width="65" height="6" rx="1" fill="#3dd9d9" opacity="0.15" />
-              {/* Missing doc warning */}
               <circle cx="105" cy="150" r="10" fill="#ff9f43" opacity="0.9" />
               <path d="M105 144 L105 151 M105 154 L105 155" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
 
-              {/* AI brain / analysis panel - center */}
+              {/* AI analysis panel */}
               <rect x="150" y="40" width="110" height="80" rx="6" fill="white" stroke="#e5e5e5" strokeWidth="1.5" />
               <rect x="158" y="48" width="94" height="55" rx="3" fill="#e8f5f5" />
-              {/* Risk score gauge */}
               <path d="M175 90 A22 22 0 0 1 220 90" stroke="#e5e5e5" strokeWidth="4" fill="none" strokeLinecap="round" />
               <path d="M175 90 A22 22 0 0 1 207 67" stroke="#3dd9d9" strokeWidth="4" fill="none" strokeLinecap="round" />
               <text x="197" y="88" textAnchor="middle" fontSize="10" fill="#1a1f2e" fontWeight="bold">72</text>
               <text x="197" y="98" textAnchor="middle" fontSize="6" fill="#666">Risk Score</text>
-              {/* Bar charts - site risk */}
               <rect x="237" y="70" width="8" height="25" rx="1" fill="#3dd9d9" opacity="0.5" />
               <rect x="249" y="60" width="8" height="35" rx="1" fill="#ff9f43" opacity="0.7" />
               <rect x="225" y="75" width="8" height="20" rx="1" fill="#3dd9d9" opacity="0.3" />
-
-              {/* Connection lines from document to AI panel */}
               <path d="M130 90 L150 75" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="4 3" />
 
               {/* Output / report panel */}
               <rect x="150" y="140" width="110" height="70" rx="6" fill="white" stroke="#e5e5e5" strokeWidth="1.5" />
               <rect x="158" y="148" width="94" height="54" rx="3" fill="#f8fffe" />
-              {/* Report lines */}
               <rect x="164" y="154" width="50" height="5" rx="1" fill="#3dd9d9" opacity="0.4" />
               <rect x="164" y="163" width="80" height="4" rx="1" fill="#ccc" />
               <rect x="164" y="171" width="70" height="4" rx="1" fill="#ccc" />
               <rect x="164" y="179" width="75" height="4" rx="1" fill="#ccc" />
-              {/* Checkmarks */}
               <path d="M237 163 L240 166 L246 160" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
               <path d="M237 171 L240 174 L246 168" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
               <circle cx="241" cy="180" r="4" fill="#ff9f43" opacity="0.6" />
-
-              {/* Connection from AI to report */}
               <path d="M205 120 L205 140" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="3 2" />
 
-              {/* Person - clinical ops professional */}
+              {/* Person */}
               <ellipse cx="80" cy="200" rx="18" ry="16" fill="#fbd5c8" />
               <ellipse cx="80" cy="186" rx="22" ry="14" fill="#1a3a4a" />
               <path d="M58 198 Q68 183 80 178 Q92 183 102 198" fill="#1a3a4a" />
@@ -153,9 +143,8 @@ export default function Page() {
             </svg>
           </div>
 
-          {/* Right side - Content */}
+          {/* Right — Title + description + actions */}
           <div className="flex flex-col justify-center">
-            {/* Badges */}
             {agent.badges && (
               <div className="mb-4 flex flex-wrap gap-2">
                 {agent.badges.map((badge) => (
@@ -178,44 +167,9 @@ export default function Page() {
             </p>
             <p className="mt-4 text-lg text-zinc-300">{agent.description}</p>
 
-            {/* What it does */}
-            <div className="mt-8">
-              <h2 className="text-xl font-semibold text-white">Key Capabilities</h2>
-              <ul className="mt-4 space-y-3">
-                {agent.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3">
-                    <svg className="mt-1 h-5 w-5 flex-shrink-0 text-[#3dd9d9]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-zinc-200">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Tech Stack */}
-            {agent.stack && (
-              <div className="mt-8">
-                <h2 className="text-xl font-semibold text-white">Tech Stack</h2>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {agent.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-zinc-700 bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Architecture */}
-            <div className="mt-6">
-              <p className="rounded-lg border border-zinc-700 bg-zinc-800/30 px-4 py-3 font-mono text-sm text-zinc-200">
-                {agent.architecture}
-              </p>
-            </div>
+            <p className="mt-4 text-sm text-zinc-500 leading-relaxed">
+              centiTMF demonstrates product judgment for structured, high-trust workflows — where auditability, usability, and operational clarity matter as much as model capability.
+            </p>
 
             {/* Actions */}
             <div className="mt-8 flex flex-wrap gap-3">
@@ -258,6 +212,118 @@ export default function Page() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* ── Demo ─────────────────────────────────────────────────────────── */}
+        <div className="mt-20">
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold text-white">See it in action</h2>
+            <p className="mt-1 text-sm text-zinc-400">
+              Watch centiTMF analyze TMF risk, surface missing artifacts, and generate inspection-readiness reports in real time.
+            </p>
+          </div>
+
+          {/* Responsive Loom embed */}
+          <div className="relative w-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 aspect-video">
+            <iframe
+              src="https://www.loom.com/embed/f26581ecf65b4368b5d5f3e9c61d7ca0"
+              frameBorder="0"
+              allowFullScreen
+              allow="fullscreen"
+              className="absolute inset-0 h-full w-full"
+              title="centiTMF — AI Inspection Readiness Demo"
+            />
+          </div>
+
+          {/* Fallback CTA */}
+          <div className="mt-4 flex items-center gap-2">
+            <a
+              href="https://www.loom.com/share/f26581ecf65b4368b5d5f3e9c61d7ca0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-[#3dd9d9]"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Watch on Loom
+            </a>
+          </div>
+        </div>
+
+        {/* ── Capabilities + Product Signal ────────────────────────────────── */}
+        <div className="mt-20 grid gap-10 lg:grid-cols-2">
+          {/* Key Capabilities */}
+          <div>
+            <h2 className="text-xl font-semibold text-white">Key Capabilities</h2>
+            <ul className="mt-4 space-y-3">
+              {agent.bullets.map((bullet) => (
+                <li key={bullet} className="flex items-start gap-3">
+                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-[#3dd9d9]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-zinc-200">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Why This Matters */}
+          <div>
+            <h2 className="text-xl font-semibold text-white">Why this matters</h2>
+            <ul className="mt-4 space-y-4">
+              {[
+                {
+                  label: "Regulated workflow product thinking",
+                  detail: "Built for compliance-sensitive environments where every output must be auditable and explainable — not just accurate.",
+                },
+                {
+                  label: "Applied AI for healthcare operations",
+                  detail: "Not a generic chatbot. A structured workflow tool for document-heavy, high-stakes clinical trial work.",
+                },
+                {
+                  label: "Human-legible outputs",
+                  detail: "Inspection risk scores, missing artifact detection, and audit-ready reports that ops teams can act on immediately.",
+                },
+                {
+                  label: "Product + engineering crossover",
+                  detail: "Designed and built end-to-end — from API design and data modeling to UI — demonstrating full-stack AI product judgment.",
+                },
+              ].map(({ label, detail }) => (
+                <li key={label} className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#3dd9d9]" />
+                  <div>
+                    <p className="text-sm font-medium text-zinc-100">{label}</p>
+                    <p className="mt-0.5 text-sm text-zinc-400">{detail}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* ── Tech Stack + Architecture ─────────────────────────────────────── */}
+        <div className="mt-16 space-y-6">
+          {agent.stack && (
+            <div>
+              <h2 className="text-xl font-semibold text-white">Tech Stack</h2>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {agent.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-zinc-700 bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <p className="rounded-lg border border-zinc-700 bg-zinc-800/30 px-4 py-3 font-mono text-sm text-zinc-200">
+            {agent.architecture}
+          </p>
         </div>
       </main>
     </div>

@@ -105,15 +105,21 @@ export const agents: Agent[] = [
     slug: "edge-health",
     category: "healthcare",
     title: "Edge Health",
-    description: "Health monitoring agent that runs diagnostics and reports on edge infrastructure status.",
-    tags: ["health", "monitoring", "edge"],
+    description:
+      "A healthcare infrastructure agent that monitors distributed edge systems, surfaces anomalies, and supports reliable data relay and operational visibility across health integrations.",
+    tags: ["Healthcare AI", "FHIR", "Infrastructure", "AI Agent"],
     demoUrl: "https://edgefhir-relay.vercel.app/",
+    badges: ["Live Demo", "Healthcare AI", "FHIR Relay"],
+    stack: ["FastAPI", "Next.js", "FHIR R4", "Python", "Uvicorn", "Vercel", "Render"],
     bullets: [
-      "Real-time infrastructure diagnostics",
-      "Anomaly detection and alerting",
-      "Edge node status aggregation",
+      "FHIR R4 store-and-forward relay with filesystem outbox queue",
+      "Real-time edge infrastructure diagnostics and node status aggregation",
+      "AI-assisted vitals triage scoring (SpO2, HR, Temp, RR) with LOINC-coded observations",
+      "Connectivity-aware relay with automatic reconnect and outbox flush",
+      "Anomaly detection and alerting across simulation modes (desat, fever, tachy)",
+      "Operational visibility dashboard for distributed health data pipelines",
     ],
-    architecture: "Next.js + edge functions + telemetry pipeline",
+    architecture: "Simulator → FastAPI Relay (:8000) → FHIR R4 Cloud (:9000) | outbox/ queue on reconnect",
   },
 ];
 

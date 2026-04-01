@@ -205,16 +205,14 @@ export default function Page() {
               Watch centiTMF review trial documents, surface missing records, and generate an inspection-readiness view.
             </p>
           </div>
-          <div className="relative w-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 aspect-video">
-            <iframe
-              src="https://www.loom.com/embed/f26581ecf65b4368b5d5f3e9c61d7ca0"
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; fullscreen; picture-in-picture"
-              className="absolute inset-0 h-full w-full"
-              title="centiTMF — AI Inspection Readiness Demo"
-            />
-          </div>
+          <iframe
+            src="https://www.loom.com/embed/f26581ecf65b4368b5d5f3e9c61d7ca0"
+            style={{ border: 0 }}
+            allowFullScreen
+            allow="autoplay; fullscreen; picture-in-picture"
+            className="block w-full aspect-video rounded-xl border border-zinc-700 bg-zinc-900"
+            title="centiTMF — AI Inspection Readiness Demo"
+          />
           <div className="mt-4 flex items-center gap-2">
             <a
               href="https://www.loom.com/share/f26581ecf65b4368b5d5f3e9c61d7ca0"

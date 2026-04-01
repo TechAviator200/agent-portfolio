@@ -191,16 +191,14 @@ export default function Page() {
               Watch Adina handle lead research, personalized message drafting, and outbound workflow orchestration.
             </p>
           </div>
-          <div className="relative w-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 aspect-video">
-            <iframe
-              src="https://www.loom.com/embed/56d8e031b4004d2f83a840e2467acf1e"
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; fullscreen; picture-in-picture"
-              className="absolute inset-0 h-full w-full"
-              title="Adina Outreach — AI Campaign Execution Demo"
-            />
-          </div>
+          <iframe
+            src="https://www.loom.com/embed/56d8e031b4004d2f83a840e2467acf1e"
+            style={{ border: 0 }}
+            allowFullScreen
+            allow="autoplay; fullscreen; picture-in-picture"
+            className="block w-full aspect-video rounded-xl border border-zinc-700 bg-zinc-900"
+            title="Adina Outreach — AI Campaign Execution Demo"
+          />
           <div className="mt-4">
             <a
               href="https://www.loom.com/share/56d8e031b4004d2f83a840e2467acf1e"

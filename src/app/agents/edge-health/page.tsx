@@ -205,16 +205,14 @@ export default function Page() {
               Watch EdgeFHIR retrieve patient context, surface system status, and demonstrate infrastructure visibility in real time.
             </p>
           </div>
-          <div className="relative w-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 aspect-video">
-            <iframe
-              src="https://www.loom.com/embed/50db14cfad9e4cdb8829be56bd9ae5ab"
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; fullscreen; picture-in-picture"
-              className="absolute inset-0 h-full w-full"
-              title="EdgeFHIR — AI Healthcare Workflow Demo"
-            />
-          </div>
+          <iframe
+            src="https://www.loom.com/embed/50db14cfad9e4cdb8829be56bd9ae5ab"
+            style={{ border: 0 }}
+            allowFullScreen
+            allow="autoplay; fullscreen; picture-in-picture"
+            className="block w-full aspect-video rounded-xl border border-zinc-700 bg-zinc-900"
+            title="EdgeFHIR — AI Healthcare Workflow Demo"
+          />
           <div className="mt-4 flex items-center gap-2">
             <a
               href="https://www.loom.com/share/50db14cfad9e4cdb8829be56bd9ae5ab"

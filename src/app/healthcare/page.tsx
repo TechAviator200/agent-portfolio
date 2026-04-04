@@ -1,183 +1,171 @@
 import Link from "next/link";
+import MobileNav from "@/components/MobileNav";
 import { getAgentsByCategory } from "@/lib/agents";
+
+const NAV_FONT = { fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif" };
+const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
+
+const cardConfig: Record<string, {
+  badge: string;
+  badgeBg: string;
+  badgeText: string;
+  badgeBorder: string;
+  borderHover: string;
+  iconBg: string;
+  iconColor: string;
+  icon: React.ReactNode;
+  image: string;
+  imageAlt: string;
+}> = {
+  "centi-tmf": {
+    badge: "Production Ready",
+    badgeBg: "bg-[#34b5fa]/10",
+    badgeText: "text-[#34b5fa]",
+    badgeBorder: "border-[#34b5fa]/20",
+    borderHover: "hover:border-[#ba9eff]/30",
+    iconBg: "bg-[#ba9eff]/20",
+    iconColor: "text-[#ba9eff]",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15M14.25 3.104c.251.023.501.05.75.082M19.8 15l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.607L5 14.5m14.8.5l.39 1.572a9 9 0 01-8.19 6.938V18m0 0v-3.75m0 3.75h3.75m-3.75 0H8.25" />
+      </svg>
+    ),
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJgL9FBgxR48lG3FIlyR0mmV6NhFG53aPziF0Sjf5lEMOZaiCGz3yUhTYAmfGvEQDp7Tb57fMB1WAEUV248tXY-Ez34dnIMh4VPANnNBdaVzXAfOYr1jfEQZ5vS1amnY7qz84ZPoOgdEqgsOLwf3d_uPPNM-RaesECkFXkagVH-k6xerxfoSzpHw3kZYoPkieI7HyNwPHkx-xgSi-bd8GmyEaEzDNu2qqX8LLhmzZD8rc4P2AmCvrFpPmRVZ-OVjuBA6Bm9HLJYndA",
+    imageAlt: "Clinical research laboratory",
+  },
+  "labflow-ai": {
+    badge: "Beta v2.4",
+    badgeBg: "bg-[#ba9eff]/10",
+    badgeText: "text-[#ba9eff]",
+    badgeBorder: "border-[#ba9eff]/20",
+    borderHover: "hover:border-[#34b5fa]/30",
+    iconBg: "bg-[#34b5fa]/20",
+    iconColor: "text-[#34b5fa]",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15M14.25 3.104c.251.023.501.05.75.082M19.8 15l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.607L5 14.5m14.8.5l.39 1.572a9 9 0 01-8.19 6.938V18m0 0v-3.75m0 3.75h3.75m-3.75 0H8.25" />
+      </svg>
+    ),
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAm_auG2Xpro61H77yGNk1MQ2L4bKFR3tmPrvyRsYaslhEnzyCDWgP9gcyq0xkpQD2xnlbevWoN7IiNUR7-IBY1dkD098XEimNfX5hV_EbsnpsxZJvk-SIT_ZeMWgH4zdvc4d_URe2eVGysQ6Cq_KlQ7tZxvzIXXMSNPSRl5p4-IooAodfzLwpZzRT9vOyUOyFLiw4KubRmBTUZJ0HnzvwVj82wvsl1R9hYCBAHIz63miT6Uv2QVIZLWHN795xxQ0rpoTWFQKD7Nv_x",
+    imageAlt: "Automated lab sample processing",
+  },
+  "edge-health": {
+    badge: "Edge Active",
+    badgeBg: "bg-[#7de9ff]/10",
+    badgeText: "text-[#7de9ff]",
+    badgeBorder: "border-[#7de9ff]/20",
+    borderHover: "hover:border-[#7de9ff]/30",
+    iconBg: "bg-[#7de9ff]/20",
+    iconColor: "text-[#7de9ff]",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
+      </svg>
+    ),
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC3EzjK2rctTcvwxx8yetuD4a1Oe2sR6Kra0cIxy1Jpe200-vp5-uqW0DFm340-r84CADBOXPPjdpxIMqifdYhWFjouCAxeKYeK4cJCZI9u8xUIWbltN6h37uuUOb-op-CKPoRag-cktQ7-OQmlKDLFCKUlSz4PeXwoWmaV5zk4yzPt43o8xsxBkYSyfeFNY6Feawd1mJGrV6fc1CXGGtbhTkP1-qfvkE2X8pFPUBCO0DUATtfF_nvky4ZPgqwroBu6MLpyd-w9fAQt",
+    imageAlt: "Futuristic medical monitoring interface",
+  },
+};
 
 export default function Page() {
   const agents = getAgentsByCategory("healthcare");
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#1a1f2e]">
-      {/* Background doodle pattern */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.12]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="healthcare-doodles"
-            width="200"
-            height="200"
-            patternUnits="userSpaceOnUse"
-          >
-            {/* Heart */}
-            <path
-              d="M30 25 Q25 18 18 25 Q10 35 30 50 Q50 35 42 25 Q35 18 30 25"
-              stroke="#3dd9d9"
-              strokeWidth="1"
-              fill="none"
-            />
-            {/* Pulse line */}
-            <path d="M150 30 L160 30 L165 20 L170 40 L175 30 L185 30" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Stethoscope */}
-            <path d="M70 90 Q65 100 70 110 Q75 120 80 115" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <circle cx="80" cy="118" r="5" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Pills */}
-            <ellipse cx="160" cy="100" rx="6" ry="10" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M154 100 L166 100" stroke="#3dd9d9" strokeWidth="0.5" />
-            {/* Clipboard */}
-            <rect x="20" y="130" width="22" height="30" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <rect x="26" y="125" width="10" height="8" stroke="#3dd9d9" strokeWidth="0.5" fill="none" />
-            <path d="M25 140 L37 140 M25 146 L35 146 M25 152 L37 152" stroke="#3dd9d9" strokeWidth="0.5" />
-            {/* DNA helix */}
-            <path d="M140 140 Q150 145 140 150 Q130 155 140 160 Q150 165 140 170" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M145 140 Q135 145 145 150 Q155 155 145 160 Q135 165 145 170" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Cross */}
-            <path d="M95 45 L95 65 M85 55 L105 55" stroke="#3dd9d9" strokeWidth="2" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#healthcare-doodles)" />
-      </svg>
-
-      {/* Navigation */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6">
-        <Link href="/" className="text-xl font-bold text-white">
-          Portfolio
-        </Link>
-        <div className="flex items-center gap-8">
-          <Link href="/" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Home
-          </Link>
-          <Link href="/projects" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Projects
-          </Link>
-          <Link href="/projects#contact" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Contact
+    <div className="min-h-screen bg-[#0b0b0f] overflow-x-hidden" style={BODY_FONT}>
+      {/* Nav */}
+      <nav className="fixed top-0 w-full h-[72px] z-50 bg-[#0e0e12]/60 backdrop-blur-xl shadow-[0_40px_40px_-10px_rgba(186,158,255,0.12)]">
+        <div className="flex justify-between items-center px-8 w-full max-w-7xl mx-auto h-full">
+          <Link href="/" className="text-xl font-bold tracking-tighter text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="hidden md:flex items-center gap-8 text-sm text-[#acaab0]">
+            <Link href="/projects" className="hover:text-white transition-colors">Products</Link>
+            <Link href="/healthcare" className="text-[#ba9eff] border-b border-[#ba9eff]/50 pb-0.5">Healthcare</Link>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+            <Link href="/projects#contact" className="hover:text-white transition-colors">Contact</Link>
+          </div>
+          <MobileNav />
+          <Link href="/projects#contact" className="hidden md:inline-flex bg-[#ba9eff] text-[#2b006e] px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_20px_rgba(186,158,255,0.4)] transition-all active:scale-95" style={NAV_FONT}>
+            Work With Us
           </Link>
         </div>
       </nav>
 
-      <main className="relative z-10 mx-auto max-w-6xl px-8 py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        {/* Header */}
-        <div className="mb-12">
-          <Link
-            href="/projects"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-zinc-300 transition-colors hover:text-[#3dd9d9] active:scale-[0.98]"
-          >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Projects
-          </Link>
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-            <span className="text-white">Healthcare & </span>
-            <span className="text-[#3dd9d9]">Life Sciences</span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-zinc-300">
-            Agents for clinical triage, interoperability, and structured healthcare workflows.
-          </p>
-        </div>
+      <main className="pt-24 min-h-screen">
+        <div className="max-w-7xl mx-auto px-8 py-12">
+          {/* Hero */}
+          <header className="mb-16 relative text-center">
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#ba9eff]/10 rounded-full blur-[120px] pointer-events-none" />
+            <h1 className="text-[3.5rem] md:text-6xl font-extrabold leading-tight tracking-tighter mb-4 text-[#fcf8fe]" style={NAV_FONT}>
+              Healthcare &amp; Life Sciences
+            </h1>
+            <p className="text-xl text-[#acaab0] max-w-2xl mx-auto" style={BODY_FONT}>
+              We build AI systems for regulated healthcare environments: clinical trial compliance, lab workflow automation, and FHIR-based interoperability. Every output is traceable. Every decision is explainable.
+            </p>
+          </header>
 
-        {/* Agents Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {agents.map((agent) => (
-            <Link
-              key={agent.slug}
-              href={`/agents/${agent.slug}`}
-              className="group flex flex-col"
-            >
-              {/* Card */}
-              <div className="flex h-48 items-center justify-center rounded-2xl bg-white p-6 transition-all duration-200 ease-out group-hover:shadow-xl group-hover:shadow-[#3dd9d9]/10 group-hover:-translate-y-2">
-                {/* Illustration */}
-                <svg viewBox="0 0 200 160" fill="none" className="h-full w-full">
-                  {/* Doctor figure */}
-                  <ellipse cx="100" cy="50" rx="22" ry="20" fill="#fbd5c8" />
-                  <ellipse cx="100" cy="35" rx="25" ry="18" fill="#1a3a4a" />
-                  <path d="M78 45 Q85 30 100 25 Q115 30 122 45" fill="#1a3a4a" />
-
-                  {/* Body with coat */}
-                  <path d="M75 72 Q70 100 75 130 L125 130 Q130 100 125 72 Q100 80 75 72" fill="white" />
-                  <path d="M75 72 L85 130" stroke="#e5e5e5" strokeWidth="1" />
-                  <path d="M125 72 L115 130" stroke="#e5e5e5" strokeWidth="1" />
-
-                  {/* Stethoscope */}
-                  <path d="M90 75 Q85 90 90 100 Q95 110 100 105" stroke="#3dd9d9" strokeWidth="2" fill="none" />
-                  <circle cx="100" cy="108" r="4" fill="#3dd9d9" />
-
-                  {/* Arms */}
-                  <path d="M75 80 Q55 95 45 110" stroke="#fbd5c8" strokeWidth="10" strokeLinecap="round" />
-                  <path d="M125 80 Q145 95 155 105" stroke="#fbd5c8" strokeWidth="10" strokeLinecap="round" />
-
-                  {/* Left hand with clipboard */}
-                  <rect x="30" y="105" width="25" height="35" rx="2" fill="#2a3142" />
-                  <rect x="33" y="110" width="19" height="25" fill="white" />
-                  <rect x="36" y="115" width="13" height="2" fill="#ccc" />
-                  <rect x="36" y="120" width="10" height="2" fill="#ccc" />
-                  <rect x="36" y="125" width="13" height="2" fill="#ccc" />
-
-                  {/* Health icons floating */}
-                  {/* Heart with plus */}
-                  <circle cx="160" cy="40" r="18" fill="#3dd9d9" opacity="0.15" />
-                  <path d="M160 35 Q155 30 150 35 Q145 42 160 52 Q175 42 170 35 Q165 30 160 35" fill="#3dd9d9" opacity="0.6" />
-                  <path d="M157 42 L163 42 M160 39 L160 45" stroke="white" strokeWidth="1.5" />
-
-                  {/* Pulse line */}
-                  <circle cx="45" cy="35" r="15" fill="#3dd9d9" opacity="0.15" />
-                  <path d="M32 35 L40 35 L43 28 L47 42 L50 35 L58 35" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
-
-                  {/* Pills */}
-                  <ellipse cx="170" cy="100" rx="8" ry="12" fill="#3dd9d9" opacity="0.4" />
-                  <path d="M162 100 L178 100" stroke="white" strokeWidth="1" />
-                </svg>
-              </div>
-
-              {/* Content below card */}
-              <div className="mt-5">
-                <h2 className="text-xl font-semibold text-white transition-colors group-hover:text-[#3dd9d9]">
-                  {agent.title}
-                </h2>
-                <p className="mt-2 text-sm text-zinc-300">
-                  {agent.description}
-                </p>
-
-                {/* Tags */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {agent.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-zinc-700 bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300"
-                    >
-                      {tag}
+          {/* 3-Column Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {agents.map((agent) => {
+              const cfg = cardConfig[agent.slug];
+              if (!cfg) return null;
+              return (
+                <Link
+                  key={agent.slug}
+                  href={`/agents/${agent.slug}`}
+                  className={`group relative bg-[#131317] rounded-xl p-8 border border-[#48474c]/15 ${cfg.borderHover} transition-all duration-500 flex flex-col h-full shadow-2xl`}
+                >
+                  {/* Icon + Badge row */}
+                  <div className="mb-6 flex justify-between items-start">
+                    <div className={`w-12 h-12 rounded-lg ${cfg.iconBg} flex items-center justify-center ${cfg.iconColor}`}>
+                      {cfg.icon}
+                    </div>
+                    <span className={`px-3 py-1 rounded-full ${cfg.badgeBg} ${cfg.badgeText} text-[10px] font-bold tracking-widest uppercase border ${cfg.badgeBorder}`} style={NAV_FONT}>
+                      {cfg.badge}
                     </span>
-                  ))}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+                  </div>
 
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <p className="mb-4 text-zinc-300">Building a healthcare technology solution?</p>
-          <Link
-            href="/projects#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#3dd9d9] px-6 py-3 text-sm font-semibold text-[#1a1f2e] transition-all hover:bg-[#2bc4c4] hover:shadow-lg hover:shadow-[#3dd9d9]/25 active:scale-[0.98]"
-          >
-            Get in Touch
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+                  {/* Title + Description */}
+                  <div className="mb-auto">
+                    <h3 className="text-2xl font-bold mb-3 text-[#fcf8fe]" style={NAV_FONT}>{agent.title}</h3>
+                    <p className="text-[#acaab0] mb-6 leading-relaxed text-sm" style={BODY_FONT}>
+                      {agent.description.split(".")[0]}.
+                    </p>
+                  </div>
+
+                  {/* Tags + Image */}
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {agent.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="px-2 py-1 rounded-md bg-[#25252b] text-[#acaab0] text-[10px] font-medium" style={NAV_FONT}>{tag}</span>
+                      ))}
+                    </div>
+                    <div className="h-40 rounded-xl overflow-hidden mt-4">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={cfg.image}
+                        alt={cfg.imageAlt}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="w-full py-12 bg-[#0b0b0f] border-t border-[#1f1f25]/50">
+        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <Link href="/" className="text-lg font-bold text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="flex gap-8 text-xs text-[#acaab0]" style={NAV_FONT}>
+            <Link href="/projects#contact" className="hover:text-[#34b5fa] transition-colors">Contact</Link>
+            <Link href="/case-studies" className="hover:text-[#34b5fa] transition-colors">Case Studies</Link>
+            <Link href="/about" className="hover:text-[#34b5fa] transition-colors">About</Link>
+          </div>
+          <div className="text-xs text-[#acaab0] text-center md:text-right" style={NAV_FONT}><span>© 2025 Tech Aviator Labs. All rights reserved.</span><br /><span className="text-[#76757a]">Built by Max</span></div>
+        </div>
+      </footer>
     </div>
   );
 }

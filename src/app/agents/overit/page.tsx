@@ -1,213 +1,172 @@
 import Link from "next/link";
+import MobileNav from "@/components/MobileNav";
 import { getAgent } from "@/lib/agents";
+
+const NAV_FONT = { fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif" };
+const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
+const ACCENT = "#34b5fa";
 
 export default function Page() {
   const agent = getAgent("overit");
   if (!agent) return <main className="p-8">Agent not found</main>;
 
-  const isLive = agent.demoUrl && agent.demoUrl !== "#";
-
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#1a1f2e]">
-      {/* Background doodle pattern */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.12]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="overit-doodles"
-            width="200"
-            height="200"
-            patternUnits="userSpaceOnUse"
-          >
-            {/* Heart */}
-            <path d="M30 40 Q25 30 18 30 Q8 30 8 42 Q8 54 30 65 Q52 54 52 42 Q52 30 42 30 Q35 30 30 40" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Chat bubble */}
-            <path d="M120 20 Q120 10 135 10 L165 10 Q175 10 175 20 L175 35 Q175 45 165 45 L145 45 L135 55 L138 45 Q120 45 120 35 Z" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Swipe arrow */}
-            <path d="M150 100 Q165 90 180 100" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M175 95 L180 100 L175 105" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Star */}
-            <path d="M50 140 L55 128 L60 140 L73 135 L62 143 L67 156 L55 148 L43 156 L48 143 L37 135 Z" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Phone outline */}
-            <rect x="160" y="130" width="22" height="38" rx="4" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <circle cx="171" cy="163" r="2" stroke="#3dd9d9" strokeWidth="0.5" fill="none" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#overit-doodles)" />
-      </svg>
-
-      {/* Navigation */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6">
-        <Link href="/" className="text-xl font-bold text-white">
-          Portfolio
-        </Link>
-        <div className="flex items-center gap-8">
-          <Link href="/" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Home
-          </Link>
-          <Link href="/projects" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Projects
-          </Link>
-          <Link href="/projects#contact" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Contact
+    <div className="min-h-screen bg-[#0b0b0f] overflow-x-hidden" style={BODY_FONT}>
+      {/* Nav */}
+      <nav className="fixed top-0 w-full h-[72px] z-50 bg-[#0e0e12]/60 backdrop-blur-xl shadow-[0_40px_40px_-10px_rgba(52,181,250,0.08)]">
+        <div className="flex justify-between items-center px-8 w-full max-w-7xl mx-auto h-full">
+          <Link href="/" className="text-xl font-bold tracking-tighter text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="hidden md:flex items-center gap-8 text-sm text-[#acaab0]">
+            <Link href="/projects" className="hover:text-white transition-colors">Products</Link>
+            <Link href="/media-entertainment" className="hover:text-white transition-colors">Media</Link>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+          </div>
+          <MobileNav />
+          <Link href="/projects#contact" className="hidden md:inline-flex bg-[#ba9eff] text-[#2b006e] px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_20px_rgba(186,158,255,0.4)] transition-all active:scale-95" style={NAV_FONT}>
+            Work With Us
           </Link>
         </div>
       </nav>
 
-      <main className="relative z-10 mx-auto max-w-6xl px-8 py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        {/* Breadcrumb */}
-        <Link
-          href="/media-entertainment"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-300 transition-colors hover:text-[#3dd9d9] active:scale-[0.98]"
-        >
-          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Media & Entertainment
-        </Link>
-
-        <div className="grid gap-12 lg:grid-cols-2">
-          {/* Left side - Illustration */}
-          <div className="flex items-center justify-center rounded-2xl bg-white p-8">
-            <svg viewBox="0 0 300 280" fill="none" className="h-full w-full max-w-md">
-              {/* Phone frame */}
-              <rect x="90" y="20" width="120" height="200" rx="16" fill="#2a3142" />
-              <rect x="96" y="30" width="108" height="180" rx="10" fill="#1a1f2e" />
-
-              {/* Screen - profile card */}
-              <rect x="100" y="38" width="100" height="120" rx="8" fill="#fbd5c8" opacity="0.8" />
-              {/* Profile photo placeholder */}
-              <ellipse cx="150" cy="75" rx="28" ry="25" fill="#3dd9d9" opacity="0.4" />
-              <ellipse cx="150" cy="65" rx="18" ry="16" fill="#fbd5c8" />
-              <path d="M122 90 Q130 78 150 75 Q170 78 178 90 L178 105 Q150 115 122 105 Z" fill="#3dd9d9" opacity="0.5" />
-
-              {/* Name & info */}
-              <rect x="108" y="115" width="60" height="6" rx="3" fill="#2a3142" opacity="0.6" />
-              <rect x="115" y="125" width="45" height="4" rx="2" fill="#2a3142" opacity="0.3" />
-
-              {/* AI suggestion bubble */}
-              <rect x="103" y="135" width="94" height="16" rx="8" fill="#3dd9d9" opacity="0.2" />
-              <rect x="110" y="139" width="70" height="3" rx="1.5" fill="#3dd9d9" opacity="0.6" />
-              <rect x="110" y="144" width="50" height="3" rx="1.5" fill="#3dd9d9" opacity="0.4" />
-
-              {/* Swipe buttons */}
-              <circle cx="125" cy="175" r="16" fill="#ff6b6b" opacity="0.2" />
-              <path d="M119 169 L131 181 M131 169 L119 181" stroke="#ff6b6b" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="175" cy="175" r="16" fill="#3dd9d9" opacity="0.2" />
-              <path d="M168 175 Q173 169 178 175 Q183 181 175 185 Q169 181 168 175" fill="#3dd9d9" opacity="0.7" />
-
-              {/* Home indicator */}
-              <rect x="135" y="212" width="30" height="3" rx="1.5" fill="#3dd9d9" opacity="0.4" />
-
-              {/* Floating hearts */}
-              <path d="M40 80 Q37 74 32 74 Q26 74 26 80 Q26 87 40 95 Q54 87 54 80 Q54 74 48 74 Q43 74 40 80" fill="#3dd9d9" opacity="0.3" />
-              <path d="M248 60 Q246 55 242 55 Q238 55 238 60 Q238 66 248 72 Q258 66 258 60 Q258 55 254 55 Q250 55 248 60" fill="#ff9f43" opacity="0.3" />
-              <path d="M260 130 Q258 126 255 126 Q252 126 252 130 Q252 134 260 138 Q268 134 268 130 Q268 126 265 126 Q262 126 260 130" fill="#3dd9d9" opacity="0.4" />
-
-              {/* Stars */}
-              <path d="M55 140 L57 134 L59 140 L65 138 L60 142 L62 148 L57 144 L52 148 L54 142 L49 138 Z" fill="#3dd9d9" opacity="0.3" />
-              <path d="M240 170 L242 165 L244 170 L249 168 L245 172 L247 177 L242 173 L237 177 L239 172 L235 168 Z" fill="#ff9f43" opacity="0.3" />
-            </svg>
+      <main className="pt-28 pb-24">
+        <div className="max-w-7xl mx-auto px-8 py-12">
+          {/* Breadcrumb */}
+          <div className="mb-6">
+            <Link href="/media-entertainment" className="inline-flex items-center gap-1.5 text-sm text-[#acaab0] hover:text-white transition-colors">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Media &amp; Entertainment
+            </Link>
           </div>
 
-          {/* Right side - Content */}
-          <div className="flex flex-col justify-center">
-            {/* Tags */}
-            <div className="mb-4 flex flex-wrap gap-2">
-              {agent.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-zinc-700 bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+          {/* Hero — copy left, image right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
+            {/* Left: content */}
+            <div className="relative">
+              <div className="absolute -top-20 left-0 w-80 h-64 bg-[#34b5fa]/10 rounded-full blur-[100px] pointer-events-none" />
+              <div className="relative">
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#34b5fa] mb-4" style={NAV_FONT}>
+                  AI Dating · Real-Time Social
+                </p>
+                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter text-[#fcf8fe] leading-tight mb-4" style={NAV_FONT}>
+                  OverIt
+                </h1>
+                <p className="text-sm font-semibold text-[#acaab0] mb-4" style={NAV_FONT}>
+                  An AI-assisted dating system built to make digital interaction feel less transactional. Real-time match scoring, conversation context, and personalized suggestions.
+                </p>
+                <p className="text-base text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
+                  {agent.description}
+                </p>
 
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-              <span className="text-[#3dd9d9]">{agent.title}</span>
-            </h1>
-            <p className="mt-4 text-lg text-zinc-300">{agent.description}</p>
-
-            {/* Stack */}
-            {agent.stack && (
-              <div className="mt-6">
-                <h2 className="text-xl font-semibold text-white">Stack</h2>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {agent.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-lg border border-[#3dd9d9]/30 bg-[#3dd9d9]/10 px-3 py-1 text-xs font-medium text-[#3dd9d9]"
-                    >
-                      {tech}
-                    </span>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#acaab0] mb-4" style={NAV_FONT}>What It Does</h3>
+                <ul className="space-y-3 mb-8">
+                  {agent.bullets.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0" style={{ color: ACCENT }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-sm text-[#acaab0]" style={BODY_FONT}>{item}</span>
+                    </li>
                   ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-3">
+                  <a href={agent.demoUrl} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all active:scale-95 hover:shadow-[0_0_24px_rgba(52,181,250,0.4)]"
+                    style={{ backgroundColor: ACCENT, color: "#003853", ...NAV_FONT }}>
+                    Launch Demo
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                  {agent.github && (
+                    <a href={agent.github} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 border border-[#48474c] text-[#acaab0] px-6 py-3 rounded-full font-semibold text-sm hover:border-[#34b5fa] hover:text-[#34b5fa] transition-all"
+                      style={NAV_FONT}>
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                      </svg>
+                      View on GitHub
+                    </a>
+                  )}
+                  <Link href="/projects#contact"
+                    className="inline-flex items-center gap-2 border border-[#48474c] text-[#acaab0] px-6 py-3 rounded-full font-semibold text-sm hover:border-[#34b5fa] hover:text-[#34b5fa] transition-all"
+                    style={NAV_FONT}>
+                    Get in Touch
+                  </Link>
                 </div>
               </div>
-            )}
-
-            {/* What it does */}
-            <div className="mt-8">
-              <h2 className="text-xl font-semibold text-white">What it does</h2>
-              <ul className="mt-4 space-y-3">
-                {agent.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3">
-                    <svg className="mt-1 h-5 w-5 flex-shrink-0 text-[#3dd9d9]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-zinc-200">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
-            {/* Architecture */}
-            <div className="mt-8">
-              <h2 className="text-xl font-semibold text-white">Architecture</h2>
-              <p className="mt-3 rounded-lg border border-zinc-700 bg-zinc-800/30 px-4 py-3 font-mono text-sm text-zinc-200">
+            {/* Right: hero image */}
+            <div className="rounded-2xl overflow-hidden border border-[#48474c]/20 shadow-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/overit-hero.png"
+                alt="OverIt"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
+          {/* Architecture + Tech Attributes */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20">
+            <div className="rounded-xl border border-[#48474c]/20 bg-[#131317] p-8">
+              <h3 className="text-lg font-bold text-[#fcf8fe] mb-6" style={NAV_FONT}>Architecture</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {(agent.stack ?? ["Next.js", "Supabase", "OpenAI", "TypeScript"]).map((tech) => (
+                  <div key={tech} className="rounded-lg border border-[#48474c]/20 bg-[#1f1f25] px-4 py-3">
+                    <p className="text-xs text-[#acaab0] font-medium" style={NAV_FONT}>{tech}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 font-mono text-xs text-[#76757a] border-t border-[#48474c]/20 pt-4">
                 {agent.architecture}
               </p>
             </div>
 
-            {/* Actions */}
-            <div className="mt-8 flex flex-wrap gap-4">
-              {isLive ? (
-                <a
-                  href={agent.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#3dd9d9] px-6 py-3 text-sm font-semibold text-[#1a1f2e] transition-all hover:bg-[#2bc4c4] hover:shadow-lg hover:shadow-[#3dd9d9]/25 active:scale-[0.98]"
-                >
-                  Launch Demo
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm text-zinc-400">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-500"></span>
-                  Demo deploying
-                </span>
-              )}
-              {agent.github && (
-                <a
-                  href={agent.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-[#3dd9d9] hover:text-[#3dd9d9] active:scale-[0.98]"
-                >
-                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                  </svg>
-                  View on GitHub
-                </a>
-              )}
+            <div className="rounded-xl border border-[#48474c]/20 bg-[#131317] p-8">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#acaab0] mb-6" style={NAV_FONT}>Key Attributes</h3>
+              <div className="space-y-4">
+                {[
+                  { title: "Kinetic Speed", desc: "Real-time match scoring and conversation suggestions delivered with sub-second latency.", color: ACCENT },
+                  { title: "Content Aware", desc: "AI suggestion layer understands conversation context, tone, and user intent to keep interactions natural.", color: "#ba9eff" },
+                  { title: "Privacy First", desc: "Built on Supabase with row-level security — user data stays private and access is scoped to each session.", color: "#7de9ff" },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full" style={{ backgroundColor: item.color }} />
+                    <div>
+                      <p className="text-sm font-semibold text-[#fcf8fe] mb-0.5" style={NAV_FONT}>{item.title}</p>
+                      <p className="text-xs text-[#acaab0] leading-relaxed" style={BODY_FONT}>{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {agent.tags.map((tag) => (
+              <span key={tag} className="px-3 py-1 rounded-full border border-[#48474c] bg-[#131317] text-xs text-[#acaab0]" style={NAV_FONT}>{tag}</span>
+            ))}
           </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="w-full py-12 border-t border-[#1f1f25] bg-[#0e0e12]">
+        <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+          <Link href="/" className="text-lg font-bold text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="flex gap-8 text-xs text-[#acaab0]" style={NAV_FONT}>
+            <Link href="/projects#contact" className="hover:text-[#34b5fa] transition-colors">Contact</Link>
+            <Link href="/case-studies" className="hover:text-[#34b5fa] transition-colors">Case Studies</Link>
+            <Link href="/about" className="hover:text-[#34b5fa] transition-colors">About</Link>
+          </div>
+          <div className="text-xs text-[#acaab0] text-center md:text-right" style={NAV_FONT}><span>© 2025 Tech Aviator Labs. All rights reserved.</span><br /><span className="text-[#76757a]">Built by Max</span></div>
+        </div>
+      </footer>
     </div>
   );
 }

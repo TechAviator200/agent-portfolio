@@ -1,0 +1,226 @@
+import Link from "next/link";
+import MobileNav from "@/components/MobileNav";
+
+const NAV_FONT = { fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif" };
+const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
+
+// Case study images for collage
+const CS_IMG_1 = "https://lh3.googleusercontent.com/aida-public/AB6AXuCFsc55zzBgH5yG4CQnzZi39JqSLY4OY5xzOy5lkbeSpvWLtQJjVpUSLGPnxsvOMJ-eu8VZY3MDcvJamHlKJmzfuqHGckCrffG31Dey8DAbp9GNdOu3MtKFIthfhk9meDBkyj75eHO-BW006c3HFERWxufJTR5TcRSoMc9931MsZaIBvLgF29tF_r_zstTnbf3SGO8wcQs-mYhn5p_AdxklaFAjQnbx9V3MZRCy3IwpylSrKtRTZmx-wmURnHZJ_ouWabuQCcrAYXA4";
+const CS_IMG_2 = "https://lh3.googleusercontent.com/aida-public/AB6AXuBWfC42En4ybfU2Gr0ZGa-uV5U9B2WfomWj8gkqxwa5PJKxSiGFK1B-tDHhuew6nPHmoWeZjxlVb1Pv1rBXehTKSViDO-gFvGUsRrg_u7C_BLYLHJe0o1EH4yl04dMEefn58peLPeiRSV7uaKukTXh6AqDO_Yhq-D8ckwymTK05A1sv9tj88kEkUMcLDvyjmQKclG5Bfgm2I23cMmSvTeAEwfLaeeti0ylmtGFE8W7mWbau2P4h7C9p37ch6cMyl8gxXawpstA8CCbB";
+const CS_IMG_3 = "https://lh3.googleusercontent.com/aida-public/AB6AXuDJB6NeMFB3QGUCElzIZuPFalyyOeFKKUw044H0Yom7uQ0OYAjK_fZWTHcc6p2IKCvnYagiigiqsoonhBZhGhplQSs3B1Z4O0soqLv9CTld1citKnuDZBW4z5zqxRKprqzkm60t7xwsOIH6ZAwUp2qOOv3YHf53xWsZNJDAXQnJQHcDXpigDDL0Mmkppk2SFDUlGRAkWk4T0_rcQUoedBiqNw0FMuCp_87TTdKYyoOK0D8zOElNVfLkHlJjpclAco";
+const CS_IMG_4 = "/centitmf-image.png";
+
+const caseStudies = [
+  {
+    title: 'The \u201cMessy Middle\u201d of Compliance Intelligence',
+    subtitle: "centiTMF",
+    category: "Healthcare AI",
+    categoryColor: "#ba9eff",
+    desc: "How an autonomous Clinical Trial Master File agent bridges the gap between raw document volumes and inspection-ready compliance state — eliminating the most manual and error-prone phase of trial documentation.",
+    href: "/agents/centi-tmf/case-study",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJgL9FBgxR48lG3FIlyR0mmV6NhFG53aPziF0Sjf5lEMOZaiCGz3yUhTYAmfGvEQDp7Tb57fMB1WAEUV248tXY-Ez34dnIMh4VPANnNBdaVzXAfOYr1jfEQZ5vS1amnY7qz84ZPoOgdEqgsOLwf3d_uPPNM-RaesECkFXkagVH-k6xerxfoSzpHw3kZYoPkieI7HyNwPHkx-xgSi-bd8GmyEaEzDNu2qqX8LLhmzZD8rc4P2AmCvrFpPmRVZ-OVjuBA6Bm9HLJYndA",
+    tags: ["Compliance", "NLP", "FDA 21 CFR", "Clinical Trials"],
+    stats: [{ label: "Document Categories", value: "0–100" }, { label: "Inspection Ready", value: "100%" }],
+  },
+];
+
+export default function Page() {
+  return (
+    <div className="min-h-screen bg-[#0e0e12] overflow-x-hidden" style={BODY_FONT}>
+      {/* Nav */}
+      <nav className="fixed top-0 w-full h-[72px] z-50 bg-[#0e0e12]/60 backdrop-blur-xl shadow-[0_40px_40px_-10px_rgba(186,158,255,0.12)]">
+        <div className="flex justify-between items-center px-8 w-full max-w-7xl mx-auto h-full">
+          <Link href="/" className="text-xl font-bold tracking-tighter text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="hidden md:flex items-center gap-8 text-sm text-[#acaab0]">
+            <Link href="/projects" className="hover:text-white transition-colors">Products</Link>
+            <Link href="/case-studies" className="text-[#ba9eff] border-b border-[#ba9eff]/50 pb-0.5">Case Studies</Link>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+          </div>
+          <MobileNav />
+          <Link href="/projects#contact" className="hidden md:inline-flex bg-[#ba9eff] text-[#2b006e] px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_20px_rgba(186,158,255,0.4)] transition-all active:scale-95" style={NAV_FONT}>
+            Work With Us
+          </Link>
+        </div>
+      </nav>
+
+      <main className="pt-24 min-h-screen flex flex-col">
+        {/* ── Featured Case Study Hero ─────────────────────────────────────── */}
+        <section className="bg-[#131317] py-32 flex-1 relative overflow-hidden flex items-center">
+          {/* Subtle dot grid */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+
+          <div className="max-w-7xl mx-auto px-8 relative z-10">
+            <div className="flex flex-col lg:flex-row gap-16 items-center">
+              {/* Left: content */}
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1f1f25] border border-[#48474c]/30 text-[#34b5fa] text-xs mb-6" style={NAV_FONT}>
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15M14.25 3.104c.251.023.501.05.75.082M19.8 15l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.607L5 14.5m14.8.5l.39 1.572a9 9 0 01-8.19 6.938V18m0 0v-3.75m0 3.75h3.75m-3.75 0H8.25" />
+                  </svg>
+                  CASE STUDY: centiTMF
+                </div>
+
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={NAV_FONT}>
+                  <span className="text-white">The &ldquo;Messy Middle&rdquo; of</span> <br />
+                  <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #ba9eff 0%, #34b5fa 100%)" }}>
+                    Compliance Intelligence.
+                  </span>
+                </h2>
+
+                <div className="space-y-6 mb-10">
+                  <p className="text-[#acaab0] text-lg leading-relaxed" style={BODY_FONT}>
+                    Clinical trials run on paperwork, yet nobody knows if it&apos;s truly complete until it&apos;s too late. With centiTMF, we built a system to ensure inspection-readiness before auditors show up.
+                  </p>
+                  <div className="bg-[#a70138]/10 border-l-4 border-[#ff6e84] p-6 rounded-r-xl">
+                    <h4 className="text-[#ff6e84] font-bold mb-2 flex items-center gap-2" style={NAV_FONT}>
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                      The Core Challenge
+                    </h4>
+                    <p className="text-[#acaab0]/90 italic" style={BODY_FONT}>
+                      &ldquo;In compliance, an unexplainable flag is worse than no flag at all. Initially, the LLM could do the heavy lifting but failed to explain its decisions, creating &lsquo;hallucinated&rsquo; urgency that eroded user trust.&rdquo;
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8 mb-12">
+                  <div>
+                    <h4 className="text-white font-bold text-3xl mb-1" style={NAV_FONT}>0–100</h4>
+                    <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Readiness Score</p>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-3xl mb-1" style={NAV_FONT}>100%</h4>
+                    <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Traceability</p>
+                  </div>
+                </div>
+
+                <Link
+                  href="/agents/centi-tmf/case-study"
+                  className="inline-block py-4 px-10 rounded-2xl font-bold text-[#2b006e] hover:shadow-[0_0_30px_rgba(186,158,255,0.3)] hover:-translate-y-0.5 transition-all active:scale-95"
+                  style={{ background: "linear-gradient(135deg, #ba9eff 0%, #34b5fa 100%)", ...NAV_FONT }}
+                >
+                  Read Case Study
+                </Link>
+              </div>
+
+              {/* Right: rotated image collage */}
+              <div className="flex-1 grid grid-cols-2 gap-4 max-w-md w-full">
+                <div className="space-y-4">
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-2deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={CS_IMG_1} alt="Architecture diagram" className="w-full object-cover aspect-square hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(3deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={CS_IMG_2} alt="Technical notebook" className="w-full object-cover aspect-[4/3] hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                </div>
+                <div className="pt-12 space-y-4">
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(1deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={CS_IMG_3} alt="Engineers at monitor" className="w-full object-cover aspect-[3/4] hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-4deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={CS_IMG_4} alt="Server rack" className="w-full object-cover aspect-square hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── More Case Studies ─────────────────────────────────────────────── */}
+        <section className="py-24 max-w-7xl mx-auto px-8 w-full">
+          <h2 className="text-3xl font-bold text-[#fcf8fe] mb-12" style={NAV_FONT}>All Case Studies</h2>
+          <div className="space-y-12">
+            {caseStudies.map((cs, i) => (
+              <Link
+                key={cs.href}
+                href={cs.href}
+                className="group block relative overflow-hidden rounded-xl bg-[#131317] border border-[#48474c]/15 hover:border-[#ba9eff]/30 transition-all duration-500 shadow-2xl"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                  {/* Image */}
+                  <div className={`relative h-64 md:h-auto overflow-hidden ${i % 2 === 1 ? "md:order-last" : ""}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cs.image}
+                      alt={cs.title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    />
+                    <div className={`absolute inset-0 ${i % 2 === 0 ? "bg-gradient-to-r from-transparent to-[#131317]" : "bg-gradient-to-l from-transparent to-[#131317]"}`} />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-10 flex flex-col justify-center">
+                    <span
+                      className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 w-fit"
+                      style={{ backgroundColor: `${cs.categoryColor}15`, color: cs.categoryColor, border: `1px solid ${cs.categoryColor}30`, ...NAV_FONT }}
+                    >
+                      {cs.category}
+                    </span>
+                    <h2 className="text-2xl font-bold text-[#fcf8fe] mb-2 group-hover:text-[#ba9eff] transition-colors" style={NAV_FONT}>
+                      {cs.title}
+                    </h2>
+                    <p className="text-sm text-[#76757a] mb-4" style={NAV_FONT}>{cs.subtitle}</p>
+                    <p className="text-[#acaab0] leading-relaxed text-sm mb-6" style={BODY_FONT}>{cs.desc}</p>
+
+                    <div className="flex gap-8 mb-6">
+                      {cs.stats.map((stat) => (
+                        <div key={stat.label}>
+                          <p className="text-2xl font-extrabold text-[#fcf8fe]" style={NAV_FONT}>{stat.value}</p>
+                          <p className="text-xs text-[#76757a]" style={BODY_FONT}>{stat.label}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {cs.tags.map((tag) => (
+                        <span key={tag} className="px-2 py-1 rounded-md bg-[#1f1f25] text-[#acaab0] text-[10px] font-medium" style={NAV_FONT}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* ── CTA ──────────────────────────────────────────────────────────── */}
+        <section className="px-8 py-32 max-w-5xl mx-auto w-full text-center">
+          <h2 className="text-4xl font-bold text-[#fcf8fe] mb-8" style={NAV_FONT}>
+            Ready for your next{" "}
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #ba9eff 0%, #34b5fa 100%)" }}>
+              Deployment?
+            </span>
+          </h2>
+          <p className="text-[#acaab0] mb-12 text-lg" style={BODY_FONT}>
+            We are currently accepting high-priority consulting engagements.
+          </p>
+          <Link
+            href="/projects#contact"
+            className="inline-block bg-white text-black font-bold py-4 px-10 rounded-2xl hover:bg-[#ba9eff] hover:text-[#2b006e] transition-all hover:-translate-y-0.5 shadow-xl active:scale-95"
+            style={NAV_FONT}
+          >
+            Initialize Consultation
+          </Link>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full py-12 border-t border-[#1f1f25] bg-[#0e0e12]">
+        <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+          <Link href="/" className="text-lg font-bold text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="flex gap-8 text-xs text-[#acaab0]" style={NAV_FONT}>
+            <Link href="/projects#contact" className="hover:text-[#34b5fa] transition-colors">Contact</Link>
+            <Link href="/case-studies" className="hover:text-[#34b5fa] transition-colors">Case Studies</Link>
+            <Link href="/about" className="hover:text-[#34b5fa] transition-colors">About</Link>
+          </div>
+          <div className="text-xs text-[#acaab0] text-center md:text-right" style={NAV_FONT}><span>© 2025 Tech Aviator Labs. All rights reserved.</span><br /><span className="text-[#76757a]">Built by Max</span></div>
+        </div>
+      </footer>
+    </div>
+  );
+}

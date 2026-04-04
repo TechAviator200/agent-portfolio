@@ -1,231 +1,147 @@
 import Link from "next/link";
+import MobileNav from "@/components/MobileNav";
 import { getAgent } from "@/lib/agents";
+
+const NAV_FONT = { fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif" };
+const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
+const ACCENT = "#ba9eff";
 
 export default function Page() {
   const agent = getAgent("radioboy");
   if (!agent) return <main className="p-8">Agent not found</main>;
 
-  const isLive = agent.demoUrl && agent.demoUrl !== "#";
-
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#1a1f2e]">
-      {/* Background doodle pattern */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.12]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="radioboy-doodles"
-            width="200"
-            height="200"
-            patternUnits="userSpaceOnUse"
-          >
-            {/* Music notes */}
-            <path
-              d="M20 30 Q25 25 25 35 M25 35 L25 20 M25 20 Q30 18 30 22"
-              stroke="#3dd9d9"
-              strokeWidth="1"
-              fill="none"
-            />
-            <path
-              d="M170 50 Q175 45 175 55 M175 55 L175 40 M175 40 Q180 38 180 42"
-              stroke="#3dd9d9"
-              strokeWidth="1"
-              fill="none"
-            />
-            {/* Headphones */}
-            <path d="M60 80 Q60 60 80 60 Q100 60 100 80" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <ellipse cx="60" cy="85" rx="6" ry="10" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <ellipse cx="100" cy="85" rx="6" ry="10" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Sound waves */}
-            <path d="M150 100 Q155 95 155 100 Q155 105 150 100" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M158 95 Q165 88 165 100 Q165 112 158 105" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M168 90 Q178 80 178 100 Q178 120 168 110" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Vinyl record */}
-            <circle cx="40" cy="150" r="20" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <circle cx="40" cy="150" r="8" stroke="#3dd9d9" strokeWidth="0.5" fill="none" />
-            <circle cx="40" cy="150" r="3" fill="#3dd9d9" opacity="0.3" />
-            {/* Microphone */}
-            <ellipse cx="160" cy="160" rx="8" ry="12" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M160 172 L160 185 M152 185 L168 185" stroke="#3dd9d9" strokeWidth="1" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#radioboy-doodles)" />
-      </svg>
-
-      {/* Navigation */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6">
-        <Link href="/" className="text-xl font-bold text-white">
-          Portfolio
-        </Link>
-        <div className="flex items-center gap-8">
-          <Link href="/" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Home
-          </Link>
-          <Link href="/projects" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Projects
-          </Link>
-          <Link href="/projects#contact" className="text-sm text-zinc-300 transition-colors hover:text-white">
-            Contact
+    <div className="min-h-screen bg-[#0b0b0f] overflow-x-hidden" style={BODY_FONT}>
+      {/* Nav */}
+      <nav className="fixed top-0 w-full h-[72px] z-50 bg-[#0e0e12]/60 backdrop-blur-xl shadow-[0_40px_40px_-10px_rgba(186,158,255,0.12)]">
+        <div className="flex justify-between items-center px-8 w-full max-w-7xl mx-auto h-full">
+          <Link href="/" className="text-xl font-bold tracking-tighter text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="hidden md:flex items-center gap-8 text-sm text-[#acaab0]">
+            <Link href="/projects" className="hover:text-white transition-colors">Products</Link>
+            <Link href="/media-entertainment" className="hover:text-white transition-colors">Media</Link>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+          </div>
+          <MobileNav />
+          <Link href="/projects#contact" className="hidden md:inline-flex bg-[#ba9eff] text-[#2b006e] px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_20px_rgba(186,158,255,0.4)] transition-all active:scale-95" style={NAV_FONT}>
+            Work With Us
           </Link>
         </div>
       </nav>
 
-      <main className="relative z-10 mx-auto max-w-6xl px-8 py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        {/* Breadcrumb */}
-        <Link
-          href="/media-entertainment"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-300 transition-colors hover:text-[#3dd9d9] active:scale-[0.98]"
-        >
-          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Media & Entertainment
-        </Link>
-
-        <div className="grid gap-12 lg:grid-cols-2">
-          {/* Left side - Illustration */}
-          <div className="flex items-center justify-center rounded-2xl bg-white p-8">
-            <svg viewBox="0 0 300 280" fill="none" className="h-full w-full max-w-md">
-              {/* Person with headphones and radio equipment */}
-              {/* Background elements */}
-              <circle cx="250" cy="50" r="25" fill="#3dd9d9" opacity="0.1" />
-              <circle cx="50" cy="230" r="20" fill="#3dd9d9" opacity="0.1" />
-
-              {/* Radio/Audio equipment - Left side */}
-              <rect x="20" y="100" width="80" height="60" rx="8" fill="#2a3142" />
-              <rect x="28" y="108" width="64" height="35" rx="4" fill="#1a1f2e" />
-              {/* Frequency display */}
-              <rect x="35" y="115" width="50" height="12" rx="2" fill="#3dd9d9" opacity="0.3" />
-              <text x="45" y="124" fill="#3dd9d9" fontSize="8" fontFamily="monospace">98.7 FM</text>
-              {/* Buttons */}
-              <circle cx="40" cy="135" r="4" fill="#3dd9d9" />
-              <circle cx="55" cy="135" r="4" fill="#ff9f43" opacity="0.6" />
-              <circle cx="70" cy="135" r="4" fill="#3dd9d9" opacity="0.5" />
-              {/* Volume slider */}
-              <rect x="28" y="150" width="64" height="4" rx="2" fill="#1a1f2e" />
-              <rect x="28" y="150" width="40" height="4" rx="2" fill="#3dd9d9" />
-
-              {/* Person */}
-              {/* Head */}
-              <ellipse cx="180" cy="100" rx="30" ry="28" fill="#fbd5c8" />
-              {/* Hair */}
-              <ellipse cx="180" cy="80" rx="35" ry="25" fill="#3dd9d9" />
-              <path d="M145 95 Q160 70 180 65 Q200 70 215 95" fill="#3dd9d9" />
-
-              {/* Headphones */}
-              <path d="M145 100 Q145 70 180 70 Q215 70 215 100" stroke="#2a3142" strokeWidth="6" fill="none" />
-              <ellipse cx="145" cy="105" rx="10" ry="15" fill="#2a3142" />
-              <ellipse cx="215" cy="105" rx="10" ry="15" fill="#2a3142" />
-              <ellipse cx="145" cy="105" rx="6" ry="10" fill="#3dd9d9" opacity="0.3" />
-              <ellipse cx="215" cy="105" rx="6" ry="10" fill="#3dd9d9" opacity="0.3" />
-
-              {/* Body */}
-              <path d="M150 130 Q145 170 150 210 L210 210 Q215 170 210 130 Q180 145 150 130" fill="white" />
-
-              {/* Arms */}
-              <path d="M150 145 Q120 160 100 160" stroke="#fbd5c8" strokeWidth="14" strokeLinecap="round" />
-              <path d="M210 145 Q240 160 260 180" stroke="#fbd5c8" strokeWidth="14" strokeLinecap="round" />
-
-              {/* Microphone on stand */}
-              <rect x="240" y="120" width="4" height="80" fill="#2a3142" />
-              <ellipse cx="242" cy="110" rx="12" ry="18" fill="#2a3142" />
-              <ellipse cx="242" cy="110" rx="8" ry="12" fill="#3dd9d9" opacity="0.2" />
-              {/* Mic mesh pattern */}
-              <path d="M235 105 L249 105 M235 110 L249 110 M235 115 L249 115" stroke="#3dd9d9" strokeWidth="0.5" opacity="0.5" />
-
-              {/* Sound waves from speaker */}
-              <path d="M100 125 Q105 120 105 125 Q105 130 100 125" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
-              <path d="M108 118 Q116 110 116 125 Q116 140 108 132" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
-              <path d="M118 112 Q130 100 130 125 Q130 150 118 138" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
-
-              {/* Legs */}
-              <path d="M160 210 Q150 240 155 270" stroke="#3dd9d9" strokeWidth="18" strokeLinecap="round" />
-              <path d="M200 210 Q210 240 205 270" stroke="#3dd9d9" strokeWidth="18" strokeLinecap="round" />
-
-              {/* Shoes */}
-              <ellipse cx="155" cy="275" rx="15" ry="6" fill="white" />
-              <ellipse cx="205" cy="275" rx="15" ry="6" fill="white" />
-
-              {/* Floating music notes */}
-              <path d="M270 60 Q275 55 275 65 M275 65 L275 45 Q282 42 282 48" stroke="#3dd9d9" strokeWidth="2" fill="none" />
-              <path d="M30 50 Q35 45 35 55 M35 55 L35 40 Q42 37 42 43" stroke="#3dd9d9" strokeWidth="2" fill="none" />
-            </svg>
+      <main className="pt-28 pb-24">
+        <div className="max-w-7xl mx-auto px-8 py-12">
+          {/* Breadcrumb */}
+          <div className="mb-6">
+            <Link href="/media-entertainment" className="inline-flex items-center gap-1.5 text-sm text-[#acaab0] hover:text-white transition-colors">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Media &amp; Entertainment
+            </Link>
           </div>
 
-          {/* Right side - Content */}
-          <div className="flex flex-col justify-center">
-            {/* Tags */}
-            <div className="mb-4 flex flex-wrap gap-2">
-              {agent.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-zinc-700 bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+          {/* Hero — copy left, image right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
+            {/* Left: content */}
+            <div className="relative">
+              <div className="absolute -top-20 left-0 w-80 h-64 bg-[#ba9eff]/10 rounded-full blur-[100px] pointer-events-none" />
+              <div className="relative">
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ba9eff] mb-4" style={NAV_FONT}>
+                  Audio Curation · AI Streaming
+                </p>
+                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter text-[#fcf8fe] leading-tight mb-6" style={NAV_FONT}>
+                  RadioBoy
+                </h1>
+                <p className="text-base text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
+                  {agent.description}
+                </p>
 
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-              <span className="text-[#3dd9d9]">{agent.title}</span>
-            </h1>
-            <p className="mt-4 text-lg text-zinc-300">{agent.description}</p>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#acaab0] mb-4" style={NAV_FONT}>What It Does</h3>
+                <ul className="space-y-3 mb-8">
+                  {agent.bullets.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0" style={{ color: ACCENT }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-sm text-[#acaab0]" style={BODY_FONT}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
 
-            {/* What it does */}
-            <div className="mt-8">
-              <h2 className="text-xl font-semibold text-white">What it does</h2>
-              <ul className="mt-4 space-y-3">
-                {agent.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3">
-                    <svg className="mt-1 h-5 w-5 flex-shrink-0 text-[#3dd9d9]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <div className="flex flex-wrap gap-3">
+                  <a href={agent.demoUrl} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all active:scale-95 hover:shadow-[0_0_24px_rgba(186,158,255,0.4)]"
+                    style={{ backgroundColor: ACCENT, color: "#2b006e", ...NAV_FONT }}>
+                    Launch Demo
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                    <span className="text-zinc-200">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
+                  </a>
+                  <Link href="/projects#contact"
+                    className="inline-flex items-center gap-2 border border-[#48474c] text-[#acaab0] px-6 py-3 rounded-full font-semibold text-sm hover:border-[#ba9eff] hover:text-[#ba9eff] transition-all"
+                    style={NAV_FONT}>
+                    Get in Touch
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            {/* Architecture */}
-            <div className="mt-8">
-              <h2 className="text-xl font-semibold text-white">Architecture</h2>
-              <p className="mt-3 rounded-lg border border-zinc-700 bg-zinc-800/30 px-4 py-3 font-mono text-sm text-zinc-200">
+            {/* Right: hero image */}
+            <div className="rounded-2xl overflow-hidden border border-[#48474c]/20 shadow-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/radioboy-hero.png"
+                alt="RadioBoy"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
+          {/* Architecture + Neural Tuning */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20">
+            <div className="rounded-xl border border-[#48474c]/20 bg-[#131317] p-8">
+              <h3 className="text-lg font-bold text-[#fcf8fe] mb-6" style={NAV_FONT}>Architecture</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {(agent.stack ?? ["Next.js", "Streaming API", "Edge Workers", "Node.js"]).map((tech) => (
+                  <div key={tech} className="rounded-lg border border-[#48474c]/20 bg-[#1f1f25] px-4 py-3">
+                    <p className="text-xs text-[#acaab0] font-medium" style={NAV_FONT}>{tech}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 font-mono text-xs text-[#76757a] border-t border-[#48474c]/20 pt-4">
                 {agent.architecture}
               </p>
             </div>
 
-            {/* Actions */}
-            <div className="mt-8 flex flex-wrap gap-4">
-              {isLive ? (
-                <a
-                  href={agent.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#3dd9d9] px-6 py-3 text-sm font-semibold text-[#1a1f2e] transition-all hover:bg-[#2bc4c4] hover:shadow-lg hover:shadow-[#3dd9d9]/25 active:scale-[0.98]"
-                >
-                  Launch Demo
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm text-zinc-400">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-500"></span>
-                  Demo deploying
-                </span>
-              )}
-              <Link
-                href="/projects#contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-zinc-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-[#3dd9d9] hover:text-[#3dd9d9] active:scale-[0.98]"
-              >
-                Get in Touch
-              </Link>
+            <div className="rounded-xl border border-[#48474c]/20 bg-[#131317] p-8">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#acaab0] mb-4" style={NAV_FONT}>How It Learns</h3>
+              <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+                RadioBoy adapts curation to listener mood, time-of-day, and engagement signals in real time. No manual configuration. The system tunes itself as it observes.
+              </p>
             </div>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {agent.tags.map((tag) => (
+              <span key={tag} className="px-3 py-1 rounded-full border border-[#48474c] bg-[#131317] text-xs text-[#acaab0]" style={NAV_FONT}>{tag}</span>
+            ))}
           </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="w-full py-12 border-t border-[#1f1f25] bg-[#0e0e12]">
+        <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+          <Link href="/" className="text-lg font-bold text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="flex gap-8 text-xs text-[#acaab0]" style={NAV_FONT}>
+            <Link href="/projects#contact" className="hover:text-[#34b5fa] transition-colors">Contact</Link>
+            <Link href="/case-studies" className="hover:text-[#34b5fa] transition-colors">Case Studies</Link>
+            <Link href="/about" className="hover:text-[#34b5fa] transition-colors">About</Link>
+          </div>
+          <div className="text-xs text-[#acaab0] text-center md:text-right" style={NAV_FONT}><span>© 2025 Tech Aviator Labs. All rights reserved.</span><br /><span className="text-[#76757a]">Built by Max</span></div>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code local settings
+.claude/
+
+# Source image assets (committed optimized versions live in public/)
+Page Images/

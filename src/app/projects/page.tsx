@@ -1,146 +1,58 @@
 "use client";
 
 import Link from "next/link";
+import MobileNav from "@/components/MobileNav";
 import { FormEvent, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-const projects = [
+const NAV_FONT = { fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif" };
+const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
+
+const verticals = [
   {
+    label: "Media & Entertainment",
+    labelColor: "text-[#ba9eff]",
+    labelBg: "bg-[#ba9eff]/10",
+    labelBorder: "border-[#ba9eff]/20",
     title: "Media & Entertainment",
+    desc: "AI systems for audio curation, real-time personalization, and social connection. Built where latency and taste are the product.",
     href: "/media-entertainment",
-    illustration: (
-      <svg viewBox="0 0 200 160" fill="none" className="h-full w-full">
-        {/* Person with VR headset */}
-        <rect x="70" y="90" width="60" height="50" rx="4" fill="#2a3142" />
-        <rect x="75" y="95" width="50" height="35" rx="2" fill="#3dd9d9" opacity="0.3" />
-
-        {/* Person */}
-        <ellipse cx="100" cy="55" rx="20" ry="18" fill="#fbd5c8" />
-        <ellipse cx="100" cy="42" rx="22" ry="15" fill="#3dd9d9" />
-        <rect x="80" y="50" width="40" height="8" rx="4" fill="#2a3142" />
-        <circle cx="88" cy="54" r="3" fill="#3dd9d9" opacity="0.5" />
-        <circle cx="112" cy="54" r="3" fill="#3dd9d9" opacity="0.5" />
-
-        {/* Body */}
-        <path d="M85 75 Q80 95 85 115 L115 115 Q120 95 115 75 Q100 80 85 75" fill="white" />
-
-        {/* Music notes */}
-        <path d="M30 40 Q35 35 35 45 M35 45 L35 25 Q42 22 42 28" stroke="#3dd9d9" strokeWidth="2" fill="none" />
-        <path d="M160 30 Q165 25 165 35 M165 35 L165 20 Q172 17 172 23" stroke="#3dd9d9" strokeWidth="2" fill="none" />
-
-        {/* Ticket */}
-        <rect x="145" y="70" width="35" height="20" rx="2" fill="#3dd9d9" opacity="0.3" />
-        <circle cx="145" cy="80" r="4" fill="white" />
-        <circle cx="180" cy="80" r="4" fill="white" />
-        <path d="M152 75 L175 75 M152 80 L170 80 M152 85 L165 85" stroke="#2a3142" strokeWidth="1" />
-
-        {/* Diamond */}
-        <path d="M25 90 L35 80 L45 90 L35 105 Z" fill="#3dd9d9" opacity="0.4" />
-
-        {/* Controller */}
-        <rect x="150" y="110" width="30" height="18" rx="8" fill="#2a3142" />
-        <circle cx="157" cy="119" r="3" fill="#3dd9d9" opacity="0.5" />
-        <circle cx="173" cy="119" r="3" fill="#3dd9d9" opacity="0.5" />
-      </svg>
-    ),
+    btnColor: "text-[#ba9eff]",
+    btnBorder: "border-[#ba9eff]/20",
+    btnHoverBg: "hover:bg-[#ba9eff]",
+    btnHoverText: "hover:text-[#2b006e]",
+    shadowColor: "hover:shadow-[0_0_80px_-12px_rgba(186,158,255,0.15)]",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAjimpIVBy4vnhJOgwTUwsQf_p97YU6ck8Pooo6p89E3psjCw0KfgwsCOwW6FChVzmWLnSyy_2RgChFDjN4-jllUYdHfCaM3bDLwN1D6i6_P7G04qvImFKXayOj71Whi-QdDaHR0zaFZ2UJ3jykfcpFprk7ZI8LM0yYXtnQReTvb_8KNuwKUwaeuzQsj5uqYAbmuEDmIbOMxU2YBhattoPeSGeFikxiNTFZbrFXlU7aUVZS7FJgaQwdqiIZzitsv2D8e-U9OZoy-jen",
   },
   {
+    label: "Enterprise",
+    labelColor: "text-[#34b5fa]",
+    labelBg: "bg-[#34b5fa]/10",
+    labelBorder: "border-[#34b5fa]/20",
     title: "Enterprise",
+    desc: "Production-grade AI systems for outbound automation, knowledge management, and structured enterprise workflows.",
     href: "/enterprise",
-    illustration: (
-      <svg viewBox="0 0 200 160" fill="none" className="h-full w-full">
-        {/* Central monitor */}
-        <rect x="70" y="50" width="60" height="45" rx="4" fill="white" stroke="#e5e5e5" strokeWidth="1" />
-        <rect x="75" y="55" width="50" height="32" rx="2" fill="#e8f5f5" />
-        <rect x="80" y="60" width="15" height="8" fill="#3dd9d9" opacity="0.4" />
-        <rect x="80" y="70" width="40" height="2" fill="#ccc" />
-        <rect x="80" y="75" width="35" height="2" fill="#ccc" />
-        <rect x="95" y="95" width="10" height="12" fill="#ddd" />
-        <rect x="85" y="107" width="30" height="4" rx="1" fill="#ccc" />
-
-        {/* Left monitor */}
-        <rect x="15" y="65" width="45" height="35" rx="3" fill="white" stroke="#e5e5e5" strokeWidth="1" />
-        <rect x="19" y="69" width="37" height="24" rx="2" fill="#e8f5f5" />
-        <path d="M25 80 L32 75 L40 85 L48 72" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
-        <rect x="33" y="100" width="8" height="8" fill="#ddd" />
-
-        {/* Right monitor */}
-        <rect x="140" y="65" width="45" height="35" rx="3" fill="white" stroke="#e5e5e5" strokeWidth="1" />
-        <rect x="144" y="69" width="37" height="24" rx="2" fill="#e8f5f5" />
-        <rect x="150" y="74" width="8" height="14" fill="#3dd9d9" opacity="0.4" />
-        <rect x="161" y="78" width="8" height="10" fill="#ff9f43" opacity="0.4" />
-        <rect x="172" y="72" width="6" height="16" fill="#3dd9d9" opacity="0.6" />
-        <rect x="158" y="100" width="8" height="8" fill="#ddd" />
-
-        {/* Connection lines */}
-        <path d="M60 82 L70 82" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="3 2" />
-        <path d="M130 82 L140 82" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="3 2" />
-        <path d="M100 50 L100 35 L37 35 L37 65" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="3 2" />
-        <path d="M100 50 L100 35 L162 35 L162 65" stroke="#3dd9d9" strokeWidth="1.5" strokeDasharray="3 2" />
-
-        {/* Small nodes */}
-        <circle cx="100" cy="35" r="4" fill="#3dd9d9" />
-        <circle cx="37" cy="35" r="3" fill="#3dd9d9" opacity="0.6" />
-        <circle cx="162" cy="35" r="3" fill="#3dd9d9" opacity="0.6" />
-
-        {/* Bottom elements */}
-        <rect x="30" y="130" width="25" height="18" rx="2" fill="#2a3142" />
-        <rect x="145" y="130" width="25" height="18" rx="2" fill="#2a3142" />
-        <path d="M55 139 L145 139" stroke="#3dd9d9" strokeWidth="1" strokeDasharray="4 3" />
-      </svg>
-    ),
+    btnColor: "text-[#34b5fa]",
+    btnBorder: "border-[#34b5fa]/20",
+    btnHoverBg: "hover:bg-[#34b5fa]",
+    btnHoverText: "hover:text-[#003853]",
+    shadowColor: "hover:shadow-[0_0_80px_-12px_rgba(52,181,250,0.15)]",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXvz13EilS9dfrXMM4FNrIyhTmJg2CD9IFS59caVUkVbtfF46zsF6CD19HyOTGcwNj5SHrOPw_NB-GRXRl5FlEfYzwMAahhKMVKtmF-uNw5DO5CGkWu2ab0iHJE7_jt7-aCzQBO4ZHJB3StfMU_tGRlJMls0x-xI3DSOk7lIn4CI5hcdrxB7VM3m8eOPFvm2I1c7KBVG-qTUuz4mRLoM6n6a8WgQyDzBagfEb9FVqKq5Zxf8hCTHBbMqwUyflcZDk3JbLGzKwhk0zc",
   },
   {
-    title: "Healthcare",
+    label: "Healthcare & Life Sciences",
+    labelColor: "text-[#ba9eff]",
+    labelBg: "bg-[#ba9eff]/10",
+    labelBorder: "border-[#ba9eff]/20",
+    title: "Healthcare & Life Sciences",
+    desc: "AI systems for clinical trial compliance, lab automation, and FHIR interoperability. Traceable outputs for regulated environments.",
     href: "/healthcare",
-    illustration: (
-      <svg viewBox="0 0 200 160" fill="none" className="h-full w-full">
-        {/* Doctor figure */}
-        <ellipse cx="100" cy="50" rx="22" ry="20" fill="#fbd5c8" />
-        <ellipse cx="100" cy="35" rx="25" ry="18" fill="#1a3a4a" />
-        <path d="M78 45 Q85 30 100 25 Q115 30 122 45" fill="#1a3a4a" />
-
-        {/* Body with coat */}
-        <path d="M75 72 Q70 100 75 130 L125 130 Q130 100 125 72 Q100 80 75 72" fill="white" />
-        <path d="M75 72 L85 130" stroke="#e5e5e5" strokeWidth="1" />
-        <path d="M125 72 L115 130" stroke="#e5e5e5" strokeWidth="1" />
-
-        {/* Stethoscope */}
-        <path d="M90 75 Q85 90 90 100 Q95 110 100 105" stroke="#3dd9d9" strokeWidth="2" fill="none" />
-        <circle cx="100" cy="108" r="4" fill="#3dd9d9" />
-
-        {/* Arms */}
-        <path d="M75 80 Q55 95 45 110" stroke="#fbd5c8" strokeWidth="10" strokeLinecap="round" />
-        <path d="M125 80 Q145 95 155 105" stroke="#fbd5c8" strokeWidth="10" strokeLinecap="round" />
-
-        {/* Left hand with clipboard */}
-        <rect x="30" y="105" width="25" height="35" rx="2" fill="#2a3142" />
-        <rect x="33" y="110" width="19" height="25" fill="white" />
-        <rect x="36" y="115" width="13" height="2" fill="#ccc" />
-        <rect x="36" y="120" width="10" height="2" fill="#ccc" />
-        <rect x="36" y="125" width="13" height="2" fill="#ccc" />
-
-        {/* Health icons floating */}
-        {/* Heart with plus */}
-        <circle cx="160" cy="40" r="18" fill="#3dd9d9" opacity="0.15" />
-        <path d="M160 35 Q155 30 150 35 Q145 42 160 52 Q175 42 170 35 Q165 30 160 35" fill="#3dd9d9" opacity="0.6" />
-        <path d="M157 42 L163 42 M160 39 L160 45" stroke="white" strokeWidth="1.5" />
-
-        {/* Pulse line */}
-        <circle cx="45" cy="35" r="15" fill="#3dd9d9" opacity="0.15" />
-        <path d="M32 35 L40 35 L43 28 L47 42 L50 35 L58 35" stroke="#3dd9d9" strokeWidth="1.5" fill="none" />
-
-        {/* Pills */}
-        <ellipse cx="170" cy="100" rx="8" ry="12" fill="#3dd9d9" opacity="0.4" />
-        <path d="M162 100 L178 100" stroke="white" strokeWidth="1" />
-
-        {/* Chat bubble */}
-        <path d="M140 130 Q140 120 155 120 L175 120 Q185 120 185 130 L185 145 Q185 155 175 155 L155 155 L145 165 L148 155 Q140 155 140 145 Z" fill="#3dd9d9" opacity="0.2" />
-        <rect x="148" y="130" width="30" height="2" fill="#3dd9d9" opacity="0.5" />
-        <rect x="148" y="136" width="25" height="2" fill="#3dd9d9" opacity="0.5" />
-        <rect x="148" y="142" width="20" height="2" fill="#3dd9d9" opacity="0.5" />
-      </svg>
-    ),
+    btnColor: "text-[#ba9eff]",
+    btnBorder: "border-[#ba9eff]/20",
+    btnHoverBg: "hover:bg-[#ba9eff]",
+    btnHoverText: "hover:text-[#2b006e]",
+    shadowColor: "hover:shadow-[0_0_80px_-12px_rgba(186,158,255,0.15)]",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDaXkC7okM_ABBkFm7XnDL5in0kKEaefaw7rHJSGj5N3MsAVmPf4t1tta54sA8-SAjtbgx6k2dG0lxCs63uXSvmNid3VrE4i4yLnrii9cvLxofZKYY-knbxjfU9AIa4Jhl0FpzOB9qVCuCeKP-SfTfRTh-tqOaxeoI_0vMHKG4ygqJeK4VOg9Wt-6hq7dmROp8lJhlsKTh_kEyHnXZemNpxLvvaG_7pey9nHfz9dabxUTfKrQf_G7lf4qbsUmDaV1XHrLRMJ-XooNlc",
   },
 ];
 
@@ -151,9 +63,7 @@ export default function ProjectsPage() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current) return;
-
     setStatus("sending");
-
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -173,205 +83,239 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#1a1f2e]">
-      {/* Background doodle pattern */}
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.12]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="project-doodles"
-            width="200"
-            height="200"
-            patternUnits="userSpaceOnUse"
-          >
-            {/* Lightbulb */}
-            <circle cx="30" cy="30" r="8" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M26 40 L34 40 M27 43 L33 43" stroke="#3dd9d9" strokeWidth="1" />
-            {/* Envelope */}
-            <rect x="150" y="20" width="24" height="16" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M150 20 L162 30 L174 20" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Clock */}
-            <circle cx="80" cy="100" r="12" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M80 100 L80 92 M80 100 L86 100" stroke="#3dd9d9" strokeWidth="1" />
-            {/* Calculator */}
-            <rect x="160" y="100" width="20" height="28" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <rect x="164" y="104" width="12" height="6" stroke="#3dd9d9" strokeWidth="0.5" fill="none" />
-            {/* Coffee cup */}
-            <path d="M20 150 L20 170 Q20 178 30 178 L40 178 Q50 178 50 170 L50 150 Z" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M50 155 Q60 155 60 162 Q60 170 50 170" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Arrow */}
-            <path d="M100 170 Q120 160 140 170" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            <path d="M135 165 L140 170 L135 175" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-            {/* Music note */}
-            <path d="M170 160 Q165 160 165 155 Q165 150 170 150 L170 140 Q178 137 178 143" stroke="#3dd9d9" strokeWidth="1" fill="none" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#project-doodles)" />
-      </svg>
-
-      <main className="relative z-10 mx-auto max-w-6xl px-8 py-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        {/* Projects Section */}
-        <section className="mb-24">
-          <h1 className="mb-12 text-4xl font-bold tracking-tight md:text-5xl">
-            <span className="text-white">My Recent </span>
-            <span className="text-[#3dd9d9]">Projects</span>
-          </h1>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {projects.map((project) => (
-              <Link
-                key={project.href}
-                href={project.href}
-                className="group flex flex-col items-center"
-              >
-                {/* Card with illustration */}
-                <div className="mb-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-white p-4 transition-all duration-200 ease-out group-hover:shadow-xl group-hover:shadow-[#3dd9d9]/10 group-hover:-translate-y-2">
-                  <div className="h-40 w-40">
-                    {project.illustration}
-                  </div>
+    <div className="min-h-screen bg-[#0e0e12] overflow-x-hidden" style={BODY_FONT}>
+      {/* Nav */}
+      <nav className="fixed top-0 w-full h-[72px] z-50 bg-[#0e0e12]/60 backdrop-blur-xl shadow-[0_40px_40px_-10px_rgba(186,158,255,0.12)]">
+        <div className="flex justify-between items-center px-8 w-full max-w-7xl mx-auto h-full">
+          <Link href="/" className="text-xl font-bold tracking-tighter text-white" style={NAV_FONT}>
+            Tech Aviator Labs
+          </Link>
+          <div className="hidden md:flex items-center gap-8 text-sm text-[#acaab0]">
+            <div className="relative group">
+              <button className="flex items-center gap-1 hover:text-white transition-colors" style={NAV_FONT}>
+                Products
+                <svg className="h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="bg-[#131317]/95 border border-[#48474c]/20 rounded-xl p-2 shadow-2xl backdrop-blur-md">
+                  {[
+                    { label: "Media & Entertainment", href: "/media-entertainment" },
+                    { label: "Enterprise", href: "/enterprise" },
+                    { label: "Healthcare & Life Sciences", href: "/healthcare" },
+                  ].map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block px-4 py-3 rounded-lg text-sm text-[#acaab0] hover:text-white hover:bg-[#ba9eff]/10 transition-colors"
+                      style={NAV_FONT}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
+              </div>
+            </div>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+            <Link href="#contact" className="hover:text-white transition-colors">Contact</Link>
+          </div>
+          <MobileNav />
+          <Link
+            href="#contact"
+            className="hidden md:inline-flex bg-[#ba9eff] text-[#2b006e] px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_20px_rgba(186,158,255,0.4)] transition-all active:scale-95"
+            style={NAV_FONT}
+          >
+            Work With Us
+          </Link>
+        </div>
+      </nav>
 
-                {/* Title below card */}
-                <h2 className="text-center text-lg font-semibold text-zinc-200 transition-colors group-hover:text-[#3dd9d9]">
-                  {project.title}
-                </h2>
-              </Link>
+      <main className="pt-32 pb-24 px-6 md:px-12">
+        {/* Hero */}
+        <div className="max-w-7xl mx-auto mb-20">
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-none mb-8" style={NAV_FONT}>
+            Industry{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ba9eff] to-[#34b5fa]">
+              Solutions
+            </span>
+          </h1>
+        </div>
+
+        {/* Vertical Cards */}
+        <div className="max-w-7xl mx-auto space-y-12 mb-32">
+          {verticals.map((v) => (
+            <Link
+              key={v.href}
+              href={v.href}
+              className={`group relative overflow-hidden rounded-xl bg-[#131317] border-none shadow-[0_0_50px_-12px_rgba(186,158,255,0.05)] transition-all duration-500 ${v.shadowColor} block cursor-pointer`}
+            >
+              <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={v.image} alt="" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0e0e12] via-[#0e0e12]/80 to-transparent" />
+              </div>
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center p-8 md:p-16">
+                <div className="md:col-span-8">
+                  <span
+                    className={`inline-block px-3 py-1 rounded-full ${v.labelBg} ${v.labelColor} text-[10px] tracking-widest uppercase mb-6 border ${v.labelBorder}`}
+                    style={NAV_FONT}
+                  >
+                    {v.label}
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight" style={NAV_FONT}>
+                    {v.title}
+                  </h2>
+                  <p className="text-[#acaab0] text-lg md:text-xl leading-relaxed max-w-xl" style={BODY_FONT}>
+                    {v.desc}
+                  </p>
+                </div>
+                <div className="md:col-span-4 flex md:justify-end">
+                  <span
+                    className={`flex items-center gap-3 bg-[#1f1f25] ${v.btnColor} px-8 py-4 rounded-xl font-bold border ${v.btnBorder} ${v.btnHoverBg} ${v.btnHoverText} transition-all duration-300`}
+                    style={NAV_FONT}
+                  >
+                    Explore Solution
+                    <svg className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Key Capabilities */}
+        <div className="max-w-7xl mx-auto mb-32">
+          <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-4" style={NAV_FONT}>
+            <span className="w-12 h-px bg-[#ba9eff]" />
+            Key Capabilities
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: "hub", title: "Auditable Decisions", desc: "Every step in the system is traceable. Operators see what ran, what it decided, and why.", color: "#ba9eff" },
+              { icon: "security", title: "Full Traceability", desc: "Compliance-ready output with complete decision logs. Built for regulated industries from day one.", color: "#34b5fa" },
+              { icon: "speed", title: "Production Infrastructure", desc: "FastAPI backends, cloud-native deployment, and observability built in. Not a demo stack.", color: "#ba9eff" },
+            ].map((cap) => (
+              <div key={cap.title} className="p-8 rounded-xl bg-[#1f1f25] border-b-2" style={{ borderColor: `${cap.color}40` }}>
+                <div className="w-10 h-10 rounded-lg mb-6 flex items-center justify-center" style={{ backgroundColor: `${cap.color}20`, color: cap.color }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                  </svg>
+                </div>
+                <h4 className="text-white text-xl font-bold mb-4" style={NAV_FONT}>{cap.title}</h4>
+                <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>{cap.desc}</p>
+              </div>
             ))}
           </div>
-        </section>
+        </div>
 
-        {/* Contact Section */}
-        <section id="contact" className="relative animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
-            {/* Left side - Heading and illustration */}
-            <div className="lg:w-2/5">
-              <h2 className="mb-8 text-4xl font-bold leading-tight">
-                <span className="text-white">Got a project in</span>
-                <br />
-                <span className="text-[#3dd9d9]">mind?</span>
-              </h2>
+        {/* Contact Section — preserved with EmailJS */}
+        <section id="contact" className="max-w-7xl mx-auto">
+          <div className="rounded-2xl border border-[#48474c]/20 bg-[#131317] p-10 md:p-16">
+            <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
+              {/* Left */}
+              <div className="lg:w-2/5">
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#34b5fa] mb-4" style={NAV_FONT}>
+                  Get in Touch
+                </p>
+                <h2 className="text-4xl font-extrabold leading-tight text-white mb-4" style={NAV_FONT}>
+                  Got a project<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ba9eff] to-[#34b5fa]">in mind?</span>
+                </h2>
+                <p className="text-[#acaab0] leading-relaxed max-w-sm" style={BODY_FONT}>
+                  Let&apos;s discuss your next agentic system, workflow automation, or AI product challenge.
+                </p>
+              </div>
 
-              {/* Person climbing chart illustration */}
-              <svg
-                className="h-64 w-64"
-                viewBox="0 0 250 280"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Bar chart */}
-                <rect x="60" y="200" width="40" height="60" fill="#e8e8e8" />
-                <rect x="110" y="150" width="40" height="110" rx="2" fill="#3dd9d9" opacity="0.6" />
-                <rect x="160" y="80" width="40" height="180" rx="2" fill="#3dd9d9" />
-
-                {/* Person climbing */}
-                {/* Head */}
-                <ellipse cx="95" cy="130" rx="18" ry="16" fill="#fbd5c8" />
-                <ellipse cx="95" cy="118" rx="20" ry="14" fill="#3dd9d9" />
-                <path d="M75 125 Q85 110 95 105 Q105 110 115 125" fill="#3dd9d9" />
-
-                {/* Body */}
-                <path d="M80 148 Q75 170 80 190 L110 190 Q115 170 110 148 Q95 155 80 148" fill="white" />
-
-                {/* Arms */}
-                <path d="M78 155 Q60 165 55 180" stroke="#fbd5c8" strokeWidth="8" strokeLinecap="round" />
-                <path d="M112 155 Q130 150 140 145" stroke="#fbd5c8" strokeWidth="8" strokeLinecap="round" />
-
-                {/* Legs */}
-                <path d="M85 190 Q70 210 65 240" stroke="#3dd9d9" strokeWidth="14" strokeLinecap="round" />
-                <path d="M105 190 Q120 210 130 230" stroke="#3dd9d9" strokeWidth="14" strokeLinecap="round" />
-
-                {/* Shoes */}
-                <ellipse cx="65" cy="245" rx="12" ry="5" fill="white" />
-                <ellipse cx="130" cy="235" rx="12" ry="5" fill="white" />
-
-                {/* Tablet/phone in hand */}
-                <rect x="135" y="138" width="15" height="20" rx="2" fill="#2a3142" />
-                <rect x="137" y="140" width="11" height="15" fill="#3dd9d9" opacity="0.3" />
-              </svg>
-            </div>
-
-            {/* Right side - Contact form */}
-            <div className="lg:w-1/2">
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-2 block text-sm text-zinc-300"
-                    >
-                      Your name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Name"
-                      className="w-full rounded-lg border border-zinc-700 bg-zinc-800/50 px-4 py-3 text-white placeholder-zinc-500 transition-colors focus:border-[#3dd9d9] focus:outline-none"
-                    />
+              {/* Right — Contact form (EmailJS preserved) */}
+              <div className="lg:w-1/2">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <div>
+                      <label htmlFor="name" className="mb-2 block text-sm text-[#acaab0]" style={NAV_FONT}>
+                        Your name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Name"
+                        className="w-full rounded-lg border border-[#48474c] bg-[#1f1f25] px-4 py-3 text-white placeholder-[#76757a] transition-colors focus:border-[#ba9eff] focus:outline-none"
+                        style={BODY_FONT}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="mb-2 block text-sm text-[#acaab0]" style={NAV_FONT}>
+                        Your email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        className="w-full rounded-lg border border-[#48474c] bg-[#1f1f25] px-4 py-3 text-white placeholder-[#76757a] transition-colors focus:border-[#ba9eff] focus:outline-none"
+                        style={BODY_FONT}
+                      />
+                    </div>
                   </div>
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-2 block text-sm text-zinc-300"
-                    >
-                      Your email
+                    <label htmlFor="message" className="mb-2 block text-sm text-[#acaab0]" style={NAV_FONT}>
+                      Your Message
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      className="w-full rounded-lg border border-zinc-700 bg-zinc-800/50 px-4 py-3 text-white placeholder-zinc-500 transition-colors focus:border-[#3dd9d9] focus:outline-none"
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      placeholder="Message"
+                      className="w-full resize-none rounded-lg border border-[#48474c] bg-[#1f1f25] px-4 py-3 text-white placeholder-[#76757a] transition-colors focus:border-[#ba9eff] focus:outline-none"
+                      style={BODY_FONT}
                     />
                   </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="mb-2 block text-sm text-zinc-300"
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className={`inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold transition-all active:scale-[0.98] disabled:opacity-70 ${
+                      status === "success"
+                        ? "bg-green-500 text-white"
+                        : status === "error"
+                        ? "bg-red-500 text-white"
+                        : "bg-[#ba9eff] text-[#2b006e] hover:shadow-[0_0_20px_rgba(186,158,255,0.4)]"
+                    }`}
+                    style={NAV_FONT}
                   >
-                    Your Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Message"
-                    className="w-full resize-none rounded-lg border border-zinc-700 bg-zinc-800/50 px-4 py-3 text-white placeholder-zinc-500 transition-colors focus:border-[#3dd9d9] focus:outline-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className={`inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all ${
-                    status === "success"
-                      ? "bg-green-500 text-white"
-                      : status === "error"
-                      ? "bg-red-500 text-white"
-                      : "bg-[#3dd9d9] text-[#1a1f2e] hover:bg-[#2bc4c4] hover:shadow-lg hover:shadow-[#3dd9d9]/25"
-                  } disabled:opacity-70 active:scale-[0.98]`}
-                >
-                  {status === "sending" && "Sending..."}
-                  {status === "success" && "Message Sent!"}
-                  {status === "error" && "Failed to Send"}
-                  {status === "idle" && (
-                    <>
-                      Send Message
-                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </>
-                  )}
-                </button>
-              </form>
+                    {status === "sending" && "Sending..."}
+                    {status === "success" && "Message Sent!"}
+                    {status === "error" && "Failed to Send"}
+                    {status === "idle" && (
+                      <>
+                        Send Message
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </section>
       </main>
+
+      {/* Footer */}
+      <footer className="w-full py-12 border-t border-[#1f1f25] bg-[#0e0e12] mt-24">
+        <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+          <Link href="/" className="text-lg font-bold text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <div className="flex gap-8 text-xs text-[#acaab0]" style={NAV_FONT}>
+            <Link href="#contact" className="hover:text-[#34b5fa] transition-colors">Contact</Link>
+            <Link href="/case-studies" className="hover:text-[#34b5fa] transition-colors">Case Studies</Link>
+            <Link href="/about" className="hover:text-[#34b5fa] transition-colors">About</Link>
+          </div>
+          <div className="text-xs text-[#acaab0] text-center md:text-right" style={NAV_FONT}><span>© 2025 Tech Aviator Labs. All rights reserved.</span><br /><span className="text-[#76757a]">Built by Max</span></div>
+        </div>
+      </footer>
     </div>
   );
 }

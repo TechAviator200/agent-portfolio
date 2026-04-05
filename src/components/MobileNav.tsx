@@ -59,7 +59,7 @@ export default function MobileNav() {
             style={NAV_FONT}
             onClick={() => setOpen(false)}
           >
-            Tech Aviator Labs
+            TechAviatorLabs
           </Link>
           <button
             onClick={() => setOpen(false)}
@@ -95,7 +95,7 @@ export default function MobileNav() {
             className="block w-full text-center bg-[#ba9eff] text-[#2b006e] px-6 py-3 rounded-full font-semibold text-sm hover:shadow-[0_0_20px_rgba(186,158,255,0.4)] transition-all active:scale-95"
             style={NAV_FONT}
           >
-            Work With Us
+            Start a Conversation
           </Link>
         </div>
       </div>

@@ -25,17 +25,17 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "AI Product Engineer | MC",
-  description: "Building agentic systems, workflow automation, and applied AI products across media & entertainment, enterprise, and healthcare & life sciences.",
+  title: "Tech Aviator Labs — AI Systems",
+  description: "Production-grade AI systems built for real-world use. We design, build, and ship across healthcare, enterprise, and media.",
   openGraph: {
-    title: "AI Product Engineer | MC",
-    description: "Building agentic systems, workflow automation, and applied AI products across media & entertainment, enterprise, and healthcare & life sciences.",
+    title: "Tech Aviator Labs — AI Systems",
+    description: "Production-grade AI systems built for real-world use. We design, build, and ship across healthcare, enterprise, and media.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Product Engineer | MC",
-    description: "Building agentic systems, workflow automation, and applied AI products across media & entertainment, enterprise, and healthcare & life sciences.",
+    title: "Tech Aviator Labs — AI Systems",
+    description: "Production-grade AI systems built for real-world use. We design, build, and ship across healthcare, enterprise, and media.",
   },
 };
 

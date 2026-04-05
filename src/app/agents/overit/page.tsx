@@ -15,7 +15,7 @@ export default function Page() {
       {/* Nav */}
       <nav className="fixed top-0 w-full h-[72px] z-50 bg-[#0e0e12]/60 backdrop-blur-xl shadow-[0_40px_40px_-10px_rgba(52,181,250,0.08)]">
         <div className="flex justify-between items-center px-8 w-full max-w-7xl mx-auto h-full">
-          <Link href="/" className="text-xl font-bold tracking-tighter text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <Link href="/" className="text-xl font-bold tracking-tighter text-white" style={NAV_FONT}>TechAviatorLabs</Link>
           <div className="hidden md:flex items-center gap-8 text-sm text-[#acaab0]">
             <Link href="/projects" className="hover:text-white transition-colors">Products</Link>
             <Link href="/media-entertainment" className="hover:text-white transition-colors">Media</Link>
@@ -23,7 +23,7 @@ export default function Page() {
           </div>
           <MobileNav />
           <Link href="/projects#contact" className="hidden md:inline-flex bg-[#ba9eff] text-[#2b006e] px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_20px_rgba(186,158,255,0.4)] transition-all active:scale-95" style={NAV_FONT}>
-            Work With Us
+            Start a Conversation
           </Link>
         </div>
       </nav>
@@ -93,7 +93,7 @@ export default function Page() {
                   <Link href="/projects#contact"
                     className="inline-flex items-center gap-2 border border-[#48474c] text-[#acaab0] px-6 py-3 rounded-full font-semibold text-sm hover:border-[#34b5fa] hover:text-[#34b5fa] transition-all"
                     style={NAV_FONT}>
-                    Get in Touch
+                    Start a Conversation
                   </Link>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function Page() {
       {/* Footer */}
       <footer className="w-full py-12 border-t border-[#1f1f25] bg-[#0e0e12]">
         <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
-          <Link href="/" className="text-lg font-bold text-white" style={NAV_FONT}>Tech Aviator Labs</Link>
+          <Link href="/" className="text-lg font-bold text-white" style={NAV_FONT}>TechAviatorLabs</Link>
           <div className="flex gap-8 text-xs text-[#acaab0]" style={NAV_FONT}>
             <Link href="/projects#contact" className="hover:text-[#34b5fa] transition-colors">Contact</Link>
             <Link href="/case-studies" className="hover:text-[#34b5fa] transition-colors">Case Studies</Link>

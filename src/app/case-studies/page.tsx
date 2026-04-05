@@ -7,7 +7,7 @@ const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
 // Case study images for collage
 const CS_IMG_1 = "https://lh3.googleusercontent.com/aida-public/AB6AXuCFsc55zzBgH5yG4CQnzZi39JqSLY4OY5xzOy5lkbeSpvWLtQJjVpUSLGPnxsvOMJ-eu8VZY3MDcvJamHlKJmzfuqHGckCrffG31Dey8DAbp9GNdOu3MtKFIthfhk9meDBkyj75eHO-BW006c3HFERWxufJTR5TcRSoMc9931MsZaIBvLgF29tF_r_zstTnbf3SGO8wcQs-mYhn5p_AdxklaFAjQnbx9V3MZRCy3IwpylSrKtRTZmx-wmURnHZJ_ouWabuQCcrAYXA4";
 const CS_IMG_2 = "https://lh3.googleusercontent.com/aida-public/AB6AXuBWfC42En4ybfU2Gr0ZGa-uV5U9B2WfomWj8gkqxwa5PJKxSiGFK1B-tDHhuew6nPHmoWeZjxlVb1Pv1rBXehTKSViDO-gFvGUsRrg_u7C_BLYLHJe0o1EH4yl04dMEefn58peLPeiRSV7uaKukTXh6AqDO_Yhq-D8ckwymTK05A1sv9tj88kEkUMcLDvyjmQKclG5Bfgm2I23cMmSvTeAEwfLaeeti0ylmtGFE8W7mWbau2P4h7C9p37ch6cMyl8gxXawpstA8CCbB";
-const CS_IMG_3 = "https://lh3.googleusercontent.com/aida-public/AB6AXuDJB6NeMFB3QGUCElzIZuPFalyyOeFKKUw044H0Yom7uQ0OYAjK_fZWTHcc6p2IKCvnYagiigiqsoonhBZhGhplQSs3B1Z4O0soqLv9CTld1citKnuDZBW4z5zqxRKprqzkm60t7xwsOIH6ZAwUp2qOOv3YHf53xWsZNJDAXQnJQHcDXpigDDL0Mmkppk2SFDUlGRAkWk4T0_rcQUoedBiqNw0FMuCp_87TTdKYyoOK0D8zOElNVfLkHlJjpclAco";
+const CS_IMG_3 = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Agarose_Gel_DNA_Electrophoresis.jpg/600px-Agarose_Gel_DNA_Electrophoresis.jpg";
 const CS_IMG_4 = "/centitmf-image.png";
 
 const caseStudies = [
@@ -119,7 +119,7 @@ export default function Page() {
                 <div className="pt-12 space-y-4">
                   <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(1deg)" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={CS_IMG_3} alt="Engineers at monitor" className="w-full object-cover aspect-[3/4] hover:scale-110 transition-transform duration-500 opacity-80" />
+                    <img src={CS_IMG_3} alt="DNA gel electrophoresis" className="w-full object-cover aspect-[3/4] hover:scale-110 transition-transform duration-500 opacity-80" />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-4deg)" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}

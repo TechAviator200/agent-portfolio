@@ -43,7 +43,7 @@ export default function Page() {
       </nav>
 
       <main className="pt-28 pb-24">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
 
           {/* Breadcrumb */}
           <div className="pt-10 pb-2">
@@ -60,34 +60,62 @@ export default function Page() {
           </div>
 
           {/* ── Hero ─────────────────────────────────────────────────────── */}
-          <section className="py-14 border-b border-[#1f1f25]">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ba9eff] mb-5" style={NAV_FONT}>
-              Case Study · Media &amp; Entertainment
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter text-[#fcf8fe] mb-8" style={NAV_FONT}>
-              Building Live Event Infrastructure for Paris Fashion Week
-            </h1>
+          <section className="py-14 border-b border-[#1f1f25] grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ba9eff] mb-5" style={NAV_FONT}>
+                Case Study · Media &amp; Entertainment
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter text-[#fcf8fe] mb-8" style={NAV_FONT}>
+                Building Live Event Infrastructure for Paris Fashion Week
+              </h1>
 
-            <dl className="space-y-2 mb-8">
-              {[
-                { label: "Client", value: "JENDAYA (London-based Creative Agency)" },
-                { label: "Industry", value: "Venture Studio (Talent Agency, Fashion Tech, and Entertainment)" },
-                { label: "Role", value: "Lead Product Engineer" },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex flex-col sm:flex-row sm:gap-6">
-                  <dt className="text-xs font-bold uppercase tracking-widest text-[#76757a] sm:w-24 flex-shrink-0 pt-0.5" style={NAV_FONT}>
-                    {label}
-                  </dt>
-                  <dd className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>{value}</dd>
+              <dl className="space-y-2 mb-8">
+                {[
+                  { label: "Client", value: "JENDAYA (London-based Creative Agency)" },
+                  { label: "Industry", value: "Venture Studio (Talent Agency, Fashion Tech, and Entertainment)" },
+                  { label: "Role", value: "Lead Product Engineer" },
+                ].map(({ label, value }) => (
+                  <div key={label} className="flex flex-col sm:flex-row sm:gap-6">
+                    <dt className="text-xs font-bold uppercase tracking-widest text-[#76757a] sm:w-24 flex-shrink-0 pt-0.5" style={NAV_FONT}>
+                      {label}
+                    </dt>
+                    <dd className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <p className="text-lg text-[#acaab0] leading-relaxed max-w-2xl mb-6" style={BODY_FONT}>
+                Led product strategy, technical delivery, and live production operations for JENDAYA during Paris Fashion Week.
+              </p>
+              <p className="text-xs text-[#76757a]" style={NAV_FONT}>Written by Max</p>
+            </div>
+
+            {/* Image collage */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-2deg)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/jendaya-case-study-1.png" alt="JENDAYA case study screen 1" className="w-full object-cover aspect-square" />
                 </div>
-              ))}
-            </dl>
-
-            <p className="text-lg text-[#acaab0] leading-relaxed max-w-2xl mb-6" style={BODY_FONT}>
-              Led product strategy, technical delivery, and live production operations for JENDAYA during Paris Fashion Week.
-            </p>
-            <p className="text-xs text-[#76757a]" style={NAV_FONT}>Written by Max</p>
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(2deg)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/jendaya-case-study-3.png" alt="JENDAYA case study screen 3" className="w-full object-cover aspect-[4/5]" />
+                </div>
+              </div>
+              <div className="pt-10 space-y-4">
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(2deg)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/jendaya-case-study-2.png" alt="JENDAYA case study screen 2" className="w-full object-cover aspect-[4/5]" />
+                </div>
+                <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-2deg)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/jendaya-case-study-4.png" alt="JENDAYA case study screen 4" className="w-full object-cover aspect-square" />
+                </div>
+              </div>
+            </div>
           </section>
+
+          <div className="max-w-3xl mx-auto">
 
           {/* ── Overview ─────────────────────────────────────────────────── */}
           <section className="py-14 border-b border-[#1f1f25]">
@@ -335,6 +363,8 @@ export default function Page() {
               A modern iOS and web stack with real-time data sync, role-based access control, and QR-based check-in infrastructure, deployed through a continuous integration and App Store release pipeline.
             </p>
           </section>
+
+          </div>
 
           {/* Bottom nav */}
           <div className="pt-14 flex items-center justify-between">

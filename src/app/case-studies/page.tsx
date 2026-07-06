@@ -73,28 +73,32 @@ export default function Page() {
                   <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15M14.25 3.104c.251.023.501.05.75.082M19.8 15l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.607L5 14.5m14.8.5l.39 1.572a9 9 0 01-8.19 6.938V18m0 0v-3.75m0 3.75h3.75m-3.75 0H8.25" />
                   </svg>
-                  CASE STUDY: JENDAYA
+                  Case Study · Media &amp; Entertainment
                 </div>
 
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={NAV_FONT}>
-                  <span className="text-white">Building Live Event Infrastructure</span> <br />
+                  <span className="text-white">It Has to Work.</span> <br />
                   <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #ba9eff 0%, #34b5fa 100%)" }}>
-                    for Paris Fashion Week.
+                    It Can&apos;t Break IRL.
                   </span>
                 </h2>
 
                 <p className="text-[#acaab0] text-lg leading-relaxed mb-10 max-w-xl" style={BODY_FONT}>
-                  A London creative agency needed talent to navigate Fashion Week in real time, and coordinators to run the operation behind it. We built both sides as one connected platform, deployed live during Paris Fashion Week Menswear SS27.
+                  How I built a two-way OS for a London creative agency during Paris Fashion Week. Two connected systems, a talent app and an operations console, kept in sync in real time during one of the most demanding weeks in fashion. Deployed live at Paris Fashion Week Menswear SS27, with production fixes shipped mid-event.
                 </p>
 
-                <div className="grid grid-cols-2 gap-8 mb-12">
+                <div className="grid grid-cols-3 gap-8 mb-12">
                   <div>
                     <h4 className="text-white font-bold text-3xl mb-1" style={NAV_FONT}>100+</h4>
                     <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Active Users</p>
                   </div>
                   <div>
+                    <h4 className="text-white font-bold text-3xl mb-1" style={NAV_FONT}>2-Sided</h4>
+                    <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Real-Time Sync</p>
+                  </div>
+                  <div>
                     <h4 className="text-white font-bold text-3xl mb-1" style={NAV_FONT}>Live</h4>
-                    <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Deployed During PFW SS27</p>
+                    <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Deployed at PFW SS27</p>
                   </div>
                 </div>
 

@@ -51,18 +51,18 @@ export default function Page() {
               <h2 className="text-2xl font-bold text-[#fcf8fe] mb-6" style={NAV_FONT}>The TechAviatorLabs Philosophy</h2>
               <div className="space-y-4 text-[#acaab0]" style={BODY_FONT}>
                 <p className="leading-relaxed">
-                  Our focus is on practical AI solutions — agents that understand context, learn from interactions, and deliver measurable value.
+                  Our focus is practical AI, and the software that carries it. Agents that understand context and learn from interactions, systems that keep people in sync in real time, dashboards that give operators a clear view of what&apos;s happening. Different problems, same standard: measurable value, not a demo.
                 </p>
                 <p className="leading-relaxed">
-                  Every system is built with deterministic reliability at its core. Operators always know what the agent did, why it did it, and what to do next. No black boxes in high-stakes environments.
+                  Every system is built with deterministic reliability at its core. Operators always know what happened, why it happened, and what to do next, whether that&apos;s an AI agent making a call or the infrastructure running underneath it. No black boxes in high-stakes environments.
                 </p>
               </div>
             </div>
             <div className="space-y-4">
               {[
                 { title: "Precision Engineering", desc: "Systems designed to be correct by construction, not corrected after the fact. Every decision is auditable.", color: "#ba9eff" },
-                { title: "Deterministic Systems", desc: "AI that behaves predictably. No probabilistic surprises in regulated or high-stakes contexts.", color: "#34b5fa" },
-                { title: "Human-in-the-Loop", desc: "Automation that amplifies human judgment, not replaces it. Operators stay in control.", color: "#7de9ff" },
+                { title: "Deterministic Systems", desc: "Software that behaves predictably. No probabilistic surprises where the stakes are too high for guesswork, whether that's an AI pipeline, a live event platform, or the logic running quietly in between.", color: "#34b5fa" },
+                { title: "Human-in-the-Loop", desc: "Automation that amplifies human judgment, it doesn't replace it. Operators stay in control, whether what's running underneath is an AI agent or a full production system.", color: "#7de9ff" },
               ].map((item) => (
                 <div key={item.title} className="rounded-xl border border-[#48474c]/20 bg-[#131317] p-6">
                   <div className="flex items-start gap-4">

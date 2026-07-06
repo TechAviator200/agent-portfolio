@@ -10,6 +10,11 @@ const CS_IMG_2 = "https://lh3.googleusercontent.com/aida-public/AB6AXuBWfC42En4y
 const CS_IMG_3 = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Agarose_Gel_DNA_Electrophoresis.jpg/600px-Agarose_Gel_DNA_Electrophoresis.jpg";
 const CS_IMG_4 = "/centitmf-image.png";
 
+const JD_IMG_1 = "/jendaya-schedule.png";
+const JD_IMG_2 = "/jendaya-qr-checkin.png";
+const JD_IMG_3 = "/jendaya-event-detail.png";
+const JD_IMG_4 = "/jendaya-plus-one.png";
+
 const caseStudies = [
   {
     title: 'The \u201cMessy Middle\u201d of Compliance Intelligence',
@@ -21,6 +26,17 @@ const caseStudies = [
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJgL9FBgxR48lG3FIlyR0mmV6NhFG53aPziF0Sjf5lEMOZaiCGz3yUhTYAmfGvEQDp7Tb57fMB1WAEUV248tXY-Ez34dnIMh4VPANnNBdaVzXAfOYr1jfEQZ5vS1amnY7qz84ZPoOgdEqgsOLwf3d_uPPNM-RaesECkFXkagVH-k6xerxfoSzpHw3kZYoPkieI7HyNwPHkx-xgSi-bd8GmyEaEzDNu2qqX8LLhmzZD8rc4P2AmCvrFpPmRVZ-OVjuBA6Bm9HLJYndA",
     tags: ["Compliance", "NLP", "FDA 21 CFR", "Clinical Trials"],
     stats: [{ label: "Document Categories", value: "0–100" }, { label: "Inspection Ready", value: "100%" }],
+  },
+  {
+    title: "Building Live Event Infrastructure for Paris Fashion Week",
+    subtitle: "JENDAYA",
+    category: "Media & Entertainment",
+    categoryColor: "#34b5fa",
+    desc: "How a two-sided iOS platform, talent navigation and an operations console, kept Paris Fashion Week talent and coordinators in sync in real time, with production fixes made live during the event.",
+    href: "/agents/jendaya/case-study",
+    image: JD_IMG_2,
+    tags: ["Fashion Tech", "Real-Time Systems", "iOS"],
+    stats: [{ label: "Active Users", value: "100+" }, { label: "Deployment", value: "Live" }],
   },
 ];
 
@@ -124,6 +140,80 @@ export default function Page() {
                   <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-4deg)" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={CS_IMG_4} alt="Server rack" className="w-full object-cover aspect-square hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Featured Case Study: JENDAYA ─────────────────────────────────── */}
+        <section className="bg-[#0e0e12] py-32 relative overflow-hidden">
+          {/* Subtle dot grid */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+
+          <div className="max-w-7xl mx-auto px-8 relative z-10">
+            <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
+              {/* Right (visually left on mobile): content */}
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1f1f25] border border-[#48474c]/30 text-[#34b5fa] text-xs mb-6" style={NAV_FONT}>
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15M14.25 3.104c.251.023.501.05.75.082M19.8 15l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.607L5 14.5m14.8.5l.39 1.572a9 9 0 01-8.19 6.938V18m0 0v-3.75m0 3.75h3.75m-3.75 0H8.25" />
+                  </svg>
+                  CASE STUDY: JENDAYA
+                </div>
+
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={NAV_FONT}>
+                  <span className="text-white">Building Live Event Infrastructure</span> <br />
+                  <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #ba9eff 0%, #34b5fa 100%)" }}>
+                    for Paris Fashion Week.
+                  </span>
+                </h2>
+
+                <p className="text-[#acaab0] text-lg leading-relaxed mb-10 max-w-xl" style={BODY_FONT}>
+                  A London creative agency needed talent to navigate Fashion Week in real time, and coordinators to run the operation behind it. We built both sides as one connected platform, deployed live during Paris Fashion Week Menswear SS27.
+                </p>
+
+                <div className="grid grid-cols-2 gap-8 mb-12">
+                  <div>
+                    <h4 className="text-white font-bold text-3xl mb-1" style={NAV_FONT}>100+</h4>
+                    <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Active Users</p>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-3xl mb-1" style={NAV_FONT}>Live</h4>
+                    <p className="text-sm text-[#76757a] uppercase tracking-wider" style={NAV_FONT}>Deployed During PFW SS27</p>
+                  </div>
+                </div>
+
+                <Link
+                  href="/agents/jendaya/case-study"
+                  className="inline-block py-4 px-10 rounded-2xl font-bold text-[#2b006e] hover:shadow-[0_0_30px_rgba(186,158,255,0.3)] hover:-translate-y-0.5 transition-all active:scale-95"
+                  style={{ background: "linear-gradient(135deg, #ba9eff 0%, #34b5fa 100%)", ...NAV_FONT }}
+                >
+                  Read Case Study
+                </Link>
+              </div>
+
+              {/* Left (visually right on mobile): rotated image collage */}
+              <div className="flex-1 grid grid-cols-2 gap-4 max-w-md w-full">
+                <div className="space-y-4">
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-2deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={JD_IMG_1} alt="JENDAYA schedule screen" className="w-full object-cover aspect-square hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(3deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={JD_IMG_2} alt="JENDAYA QR check-in screen" className="w-full object-cover aspect-[4/3] hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                </div>
+                <div className="pt-12 space-y-4">
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(1deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={JD_IMG_3} alt="JENDAYA event detail screen" className="w-full object-cover aspect-[3/4] hover:scale-110 transition-transform duration-500 opacity-80" />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#48474c]/20 bg-[#1f1f25]" style={{ transform: "rotate(-4deg)" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={JD_IMG_4} alt="JENDAYA plus-one request screen" className="w-full object-cover aspect-square hover:scale-110 transition-transform duration-500 opacity-80" />
                   </div>
                 </div>
               </div>

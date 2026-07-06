@@ -164,7 +164,7 @@ export default function Home() {
                     </svg>
                   ),
                   title: "Build the System",
-                  desc: "Custom RAG pipelines, multi-step reasoning, and deterministic decision logic. Designed to be auditable, not opaque.",
+                  desc: "We write the code ourselves. RAG pipelines and agents reasoning where AI should make the call, deterministic logic where it shouldn't. Every decision the system makes can be traced back to why it made it.",
                   border: "#34b5fa",
                   shadow: "rgba(52,181,250,0.1)",
                 },
@@ -175,7 +175,7 @@ export default function Home() {
                     </svg>
                   ),
                   title: "Ship to Production",
-                  desc: "FastAPI backends, cloud infrastructure, and full observability from day one. Not a prototype. A deployed system.",
+                  desc: "We don't hand you a demo and walk away. We deploy it, watch how it holds up under real usage, and fix what breaks before it becomes your problem. That's the difference between a prototype and a system people can depend on.",
                   border: "#ba9eff",
                   shadow: "rgba(186,158,255,0.1)",
                 },

@@ -193,7 +193,7 @@ export default function Page() {
             <Link href="/case-studies" className="hover:text-[#34b5fa] transition-colors">Case Studies</Link>
             <Link href="/about" className="hover:text-[#34b5fa] transition-colors">About</Link>
           </div>
-          <div className="text-xs text-[#acaab0] text-center md:text-right" style={NAV_FONT}><span>© 2025 Tech Aviator Labs. All rights reserved.</span><br /><span className="text-[#76757a]">Built by Max</span></div>
+          <div className="text-xs text-[#acaab0] text-center md:text-right" style={NAV_FONT}><span>© 2026 Tech Aviator Labs</span><br /><span className="text-[#76757a]">Built by Max</span></div>
         </div>
       </footer>
     </div>

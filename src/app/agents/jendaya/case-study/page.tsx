@@ -4,24 +4,12 @@ import type { Metadata } from "next";
 
 const NAV_FONT = { fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif" };
 const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
-const ACCENT = "#ba9eff";
 
 export const metadata: Metadata = {
   title: "JENDAYA Case Study — Tech Aviator Labs",
   description:
-    "Led product strategy, technical delivery, and live production operations for JENDAYA during Paris Fashion Week.",
+    "How I built a two-way OS for a London creative agency during Paris Fashion Week — and every hard decision that shaped it.",
 };
-
-function CheckItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-3">
-      <svg className="mt-0.5 h-5 w-5 flex-shrink-0" style={{ color: ACCENT }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-      </svg>
-      <span className="text-sm text-[#acaab0]" style={BODY_FONT}>{children}</span>
-    </li>
-  );
-}
 
 export default function Page() {
   return (
@@ -65,27 +53,12 @@ export default function Page() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ba9eff] mb-5" style={NAV_FONT}>
                 Case Study · Media &amp; Entertainment
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter text-[#fcf8fe] mb-8" style={NAV_FONT}>
-                Building Live Event Infrastructure for Paris Fashion Week
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter text-[#fcf8fe] mb-6" style={NAV_FONT}>
+                It Has to Work. It Can&apos;t Break IRL.
               </h1>
 
-              <dl className="space-y-2 mb-8">
-                {[
-                  { label: "Client", value: "JENDAYA (London-based Creative Agency)" },
-                  { label: "Industry", value: "Venture Studio (Talent Agency, Fashion Tech, and Entertainment)" },
-                  { label: "Role", value: "Lead Product Engineer" },
-                ].map(({ label, value }) => (
-                  <div key={label} className="flex flex-col sm:flex-row sm:gap-6">
-                    <dt className="text-xs font-bold uppercase tracking-widest text-[#76757a] sm:w-24 flex-shrink-0 pt-0.5" style={NAV_FONT}>
-                      {label}
-                    </dt>
-                    <dd className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>{value}</dd>
-                  </div>
-                ))}
-              </dl>
-
               <p className="text-lg text-[#acaab0] leading-relaxed max-w-2xl mb-6" style={BODY_FONT}>
-                Led product strategy, technical delivery, and live production operations for JENDAYA during Paris Fashion Week.
+                How I built a two-way OS for a London creative agency during Paris Fashion Week.
               </p>
               <p className="text-xs text-[#76757a]" style={NAV_FONT}>Written by Max</p>
             </div>
@@ -117,202 +90,176 @@ export default function Page() {
 
           <div className="max-w-3xl mx-auto">
 
-          {/* ── Overview ─────────────────────────────────────────────────── */}
+          {/* ── The Problem ───────────────────────────────────── */}
           <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>Overview</h2>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>The problem</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
+              Talent needed to move fast. The team behind them needed to see everything.
+            </h2>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              Paris Fashion Week is one of the most operationally demanding events in the creative industry. Hundreds of talent, coordinators, managers, and agencies move between venues on constantly evolving schedules where even a small delay can ripple across an entire day&apos;s programming.
+              JENDAYA, a London-based creative agency, needed a platform for Paris Fashion Week Menswear SS27 that solved two connected problems at once. Talent needed a reliable way to check schedules, navigate between shows, check in at venues, and submit content, often on unreliable networks, mid-city, between events that could shift with no warning.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              JENDAYA, a London-based creative agency, partnered with TechAviatorLabs to design and build a mobile platform capable of supporting both the people attending Fashion Week and the operational teams coordinating it behind the scenes.
+              Behind them, coordinators and managers needed visibility into all of it: who was assigned where, what had been approved, what was changing day-of. Before this project, that visibility lived across messaging apps, spreadsheets, and manual coordination. At Fashion Week scale, that&apos;s not an inconvenience, it&apos;s where things start to break.
             </p>
             <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              The project was delivered over an accelerated two-month timeline and deployed live during Paris Fashion Week Menswear SS27.
+              The build ran on an accelerated two-month timeline, while stakeholders were traveling internationally, toward a launch date that could not move.
             </p>
           </section>
 
-          {/* ── The Challenge ────────────────────────────────────────────── */}
+          {/* ── What Broke First ─────────────────────────────── */}
           <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>The Challenge</h2>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>What broke first</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
+              QR check-ins started resolving to the wrong event. There&apos;s no next sprint to fix it in.
+            </h2>
+            <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
+              Within days of launch, QR scanning began occasionally associating talent with the wrong event when two events fell on the same day. In a compliance system, that&apos;s a data problem. Here, it was someone standing outside a venue who couldn&apos;t get in.
+            </p>
+
+            <div className="border-l-4 border-amber-500 bg-amber-500/10 rounded-r-xl px-6 py-5 mb-6">
+              <p className="text-sm font-bold text-amber-400 mb-2" style={NAV_FONT}>The fix</p>
+              <p className="text-[#acaab0] leading-relaxed text-sm" style={BODY_FONT}>
+                There was no waiting for a future release cycle. The check-in logic was refined and shipped mid-week, live, while Fashion Week was running.
+              </p>
+            </div>
+
+            <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+              That single incident set the tone for the rest of the engagement: launch wasn&apos;t the finish line, it was the start of an ongoing production support job.
+            </p>
+          </section>
+
+          {/* ── Key Decision: Access Control ────────────────── */}
+          <section className="py-14 border-b border-[#1f1f25]">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>Key decision</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
+              Should access control be built in from day one, or layered in once core features shipped?
+            </h2>
+
+            <div className="rounded-xl border border-[#48474c]/30 bg-[#131317] p-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-2" style={NAV_FONT}>The trade-off</p>
+              <h3 className="text-base font-bold text-[#fcf8fe] mb-5" style={NAV_FONT}>Should access control ship on day one, or come later?</h3>
+
+              <div className="grid sm:grid-cols-2 gap-4 mb-5">
+                <div className="rounded-lg border border-red-900/50 bg-red-900/10 p-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-red-400 mb-2" style={NAV_FONT}>Rejected</p>
+                  <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+                    <strong className="text-[#fcf8fe]">Ship features first, add permissions later</strong><br />
+                    Faster to demo, faster to get in front of the client. But access control retrofitted after the fact tends to leave gaps exactly where the stakes are highest, and talent data and operational data were sitting on the same platform.
+                  </p>
+                </div>
+                <div className="rounded-lg border border-green-900/50 bg-green-900/10 p-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-green-400 mb-2" style={NAV_FONT}>Chosen</p>
+                  <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+                    <strong className="text-[#fcf8fe]">Role-based permissions from day one</strong><br />
+                    Operational users and talent had explicitly different access from the first build, not a later patch.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#1f1f25]">
+                <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+                  <strong className="text-[#fcf8fe]">Why:</strong> Two very different audiences, talent and agency staff, were touching the same platform. Getting access control wrong here wasn&apos;t a UX bug. It was a real exposure risk on a live international event with the agency&apos;s own operations running through it.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Key Decision: Social Features ────────────────── */}
+          <section className="py-14 border-b border-[#1f1f25]">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>Key decision</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
+              Should talent-facing social features ship with v1, or get cut for launch?
+            </h2>
+
+            <div className="rounded-xl border border-[#48474c]/30 bg-[#131317] p-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-2" style={NAV_FONT}>The trade-off</p>
+              <h3 className="text-base font-bold text-[#fcf8fe] mb-5" style={NAV_FONT}>Should v1 include talent-facing social features?</h3>
+
+              <div className="grid sm:grid-cols-2 gap-4 mb-5">
+                <div className="rounded-lg border border-red-900/50 bg-red-900/10 p-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-red-400 mb-2" style={NAV_FONT}>Rejected</p>
+                  <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+                    <strong className="text-[#fcf8fe]">Ship a fuller v1</strong><br />
+                    Include talent-facing social features, in-app content feeds, cross-talent messaging, alongside the core scheduling and check-in tools, for a more complete first release.
+                  </p>
+                </div>
+                <div className="rounded-lg border border-green-900/50 bg-green-900/10 p-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-green-400 mb-2" style={NAV_FONT}>Chosen</p>
+                  <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+                    <strong className="text-[#fcf8fe]">Defer social features. Protect the operational core.</strong><br />
+                    Engineering time stayed focused on the workflows carrying the most operational risk: schedules, check-ins, and assignments.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#1f1f25]">
+                <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+                  <strong className="text-[#fcf8fe]">Why:</strong> A missed notification on a content feed is an annoyance. A broken check-in strands someone outside a venue. Under a fixed, unmovable launch date, the operationally critical path mattered more than a richer feature set, so the richer feature set waited.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── What I Built ──────────────────────────────── */}
+          <section className="py-14 border-b border-[#1f1f25]">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>What I built</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
+              The platform in its final form
+            </h2>
+            <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
+              The platform shipped as two connected experiences, kept in sync in real time so an operational change on one side showed up instantly on the other.
+            </p>
+            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
+              <strong className="text-[#fcf8fe]">Talent Experience</strong> — a native iOS application for personalized schedules, event navigation, QR check-in, content upload, Plus One requests, and role-specific access. Built natively in Swift to stay responsive under real Fashion Week conditions: crowded venues, spotty networks, and schedules changing in real time.
+            </p>
             <p className="text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
-              The engagement presented two distinct but interconnected problems.
+              <strong className="text-[#fcf8fe]">Operations Console</strong> — a business platform for assigning talent to events, managing coordinators, approving requests, moderating content, and coordinating live event logistics.
             </p>
 
-            <h3 className="text-lg font-bold text-[#fcf8fe] mb-3" style={NAV_FONT}>1. The Talent Experience</h3>
-            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              Talent needed a reliable mobile experience that allowed them to:
-            </p>
-            <ul className="space-y-3 mb-4">
-              <CheckItem>View their schedules</CheckItem>
-              <CheckItem>Navigate between shows</CheckItem>
-              <CheckItem>Receive operational updates</CheckItem>
-              <CheckItem>Access QR check-ins</CheckItem>
-              <CheckItem>Submit content</CheckItem>
-              <CheckItem>Manage invitations and Plus Ones</CheckItem>
-            </ul>
-            <p className="text-[#acaab0] leading-relaxed mb-10" style={BODY_FONT}>
-              The platform needed to remain responsive despite changing schedules and varying network conditions across Paris.
-            </p>
-
-            <h3 className="text-lg font-bold text-[#fcf8fe] mb-3" style={NAV_FONT}>2. Agency Operations</h3>
-            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              Behind every successful Fashion Week activation is a large operational team. Coordinators, managers, and administrators needed visibility into:
-            </p>
-            <ul className="space-y-3 mb-4">
-              <CheckItem>Event schedules</CheckItem>
-              <CheckItem>Talent assignments</CheckItem>
-              <CheckItem>Check-ins</CheckItem>
-              <CheckItem>Content approvals</CheckItem>
-              <CheckItem>Operational requests</CheckItem>
-              <CheckItem>Day-of-event changes</CheckItem>
-            </ul>
-            <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              Without a centralized operational layer, these workflows were spread across messaging apps, spreadsheets, and manual coordination.
-            </p>
-          </section>
-
-          {/* ── Discovery ────────────────────────────────────────────────── */}
-          <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>Discovery</h2>
-            <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
-              Before writing a single line of production code, TechAviatorLabs worked with the JENDAYA team to understand how Fashion Week actually operated. Rather than designing from assumptions, discovery sessions focused on identifying the highest-friction operational workflows.
-            </p>
-            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              Three themes consistently emerged:
-            </p>
-            <ul className="space-y-3 mb-6">
-              <CheckItem>Schedule coordination across multiple venues</CheckItem>
-              <CheckItem>Talent communication during rapidly changing events</CheckItem>
-              <CheckItem>Operational visibility for coordinators and managers</CheckItem>
-            </ul>
-            <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              Those findings became the foundation of the product roadmap.
-            </p>
-          </section>
-
-          {/* ── Solution ─────────────────────────────────────────────────── */}
-          <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>Solution</h2>
-            <p className="text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
-              TechAviatorLabs partnered with JENDAYA to design the JENDAYA iOS platform as two connected experiences.
-            </p>
-
-            <h3 className="text-lg font-bold text-[#fcf8fe] mb-3" style={NAV_FONT}>Talent Experience</h3>
-            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              A native iOS application allowing talent to:
-            </p>
-            <ul className="space-y-3 mb-10">
-              <CheckItem>View personalized schedules</CheckItem>
-              <CheckItem>Navigate between events</CheckItem>
-              <CheckItem>Check into venues using QR codes</CheckItem>
-              <CheckItem>Upload event content</CheckItem>
-              <CheckItem>Request Plus Ones</CheckItem>
-              <CheckItem>Receive role-specific experiences</CheckItem>
-            </ul>
-
-            <h3 className="text-lg font-bold text-[#fcf8fe] mb-3" style={NAV_FONT}>Operations Console</h3>
-            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              A business platform enabling operational teams to:
-            </p>
-            <ul className="space-y-3 mb-6">
-              <CheckItem>Assign talent to events</CheckItem>
-              <CheckItem>Manage coordinators</CheckItem>
-              <CheckItem>Approve requests</CheckItem>
-              <CheckItem>Moderate submitted content</CheckItem>
-              <CheckItem>Monitor check-ins</CheckItem>
-              <CheckItem>Coordinate live event logistics</CheckItem>
-            </ul>
-            <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              The two systems remained synchronized so operational changes could immediately reflect in the talent experience.
-            </p>
-          </section>
-
-          {/* ── Engineering Under Real Constraints ───────────────────────── */}
-          <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>Engineering Under Real Constraints</h2>
-            <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
-              Unlike many enterprise engagements, development occurred while multiple stakeholders were traveling internationally. Engineering continued across multiple time zones while preparing for a fixed launch date that could not move.
-            </p>
-            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              Additional constraints included:
-            </p>
-            <ul className="space-y-3 mb-6">
-              <CheckItem>Limited local development infrastructure</CheckItem>
-              <CheckItem>International travel</CheckItem>
-              <CheckItem>App Store submission timelines</CheckItem>
-              <CheckItem>French market availability</CheckItem>
-              <CheckItem>Production deployment immediately before Fashion Week</CheckItem>
-            </ul>
-            <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              These constraints required rapid decision making and continuous prioritization throughout development.
-            </p>
-          </section>
-
-          {/* ── Tradeoffs ────────────────────────────────────────────────── */}
-          <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-6 leading-snug" style={NAV_FONT}>Tradeoffs</h2>
-            <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
-              One of the most valuable lessons from this engagement was understanding the difference between software that works in development and software that survives live operations. Several tradeoffs shaped the project.
-            </p>
-
-            <div className="divide-y divide-[#1f1f25]">
+            <div className="grid sm:grid-cols-3 gap-4">
               {[
-                {
-                  title: "Security Before Features",
-                  body: "Rather than optimizing for feature count, security and role-based permissions were prioritized first. Operational users required different permissions than talent, making access control foundational to the platform.",
-                },
-                {
-                  title: "Reliability Over Perfection",
-                  body: "Some feature requests were intentionally deferred so the core operational workflows remained stable. The priority became ensuring that schedules loaded reliably, QR check-ins worked, and assignments remained accurate before expanding functionality.",
-                },
-                {
-                  title: "Continuous Production Iteration",
-                  body: "Fashion Week began only days after launch. Rather than treating launch as the finish line, engineering shifted into live operational support. Real user feedback immediately informed iterative improvements.",
-                },
-              ].map(({ title, body }) => (
-                <div key={title} className="py-5">
-                  <h4 className="text-sm font-semibold text-[#fcf8fe] mb-2" style={NAV_FONT}>{title}</h4>
-                  <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>{body}</p>
+                { metric: "100+", desc: "Active users onboarded during Fashion Week" },
+                { metric: "2-sided", desc: "Platform kept in real-time sync across talent and operations" },
+                { metric: "Live", desc: "Deployed during Paris Fashion Week Menswear SS27, with fixes shipped in production throughout the week" },
+              ].map(({ metric, desc }) => (
+                <div key={metric} className="rounded-xl border border-[#48474c]/30 bg-[#131317] p-5">
+                  <p className="text-4xl font-extrabold text-[#ba9eff] mb-2" style={NAV_FONT}>{metric}</p>
+                  <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>{desc}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* ── What Broke, and How We Fixed It ──────────────────────────── */}
+          {/* ── What Else Broke ─────────────────────────── */}
           <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-6 leading-snug" style={NAV_FONT}>What Broke, and How We Fixed It</h2>
-            <p className="text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
-              Launching during a live international event meant production issues surfaced under real operating conditions. Instead of waiting for a future release cycle, issues were triaged and resolved throughout Fashion Week.
-            </p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>In production</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-6 leading-snug" style={NAV_FONT}>
+              What else broke, and how it got fixed
+            </h2>
 
             <div className="space-y-4">
               {[
                 {
-                  title: "QR Check-In Logic",
-                  issue: "QR scanning occasionally associated users with the incorrect event during same-day schedules.",
-                  resolution: "The check-in logic was refined to correctly resolve same-day event conflicts.",
-                  result: "More accurate check-ins and reduced coordinator intervention.",
-                },
-                {
                   title: "Coordinator Operations",
-                  issue: "Coordinators initially lacked visibility into assigned talent and event responsibilities.",
-                  resolution: "Operational visibility was refined so each coordinator's dashboard reflected their actual scope of responsibility.",
-                  result: "Coordinators gained a focused operational dashboard that reflected their real responsibilities.",
+                  issue: "Coordinators initially lacked clear visibility into their own assigned talent and responsibilities.",
+                  fix: "Operational visibility was refined so each coordinator's dashboard reflected their actual scope.",
+                  result: "A focused dashboard that matched what coordinators were actually responsible for.",
                 },
                 {
                   title: "French App Store Availability",
-                  issue: "Late in deployment, the application encountered an App Store availability issue affecting France.",
-                  resolution: "App Store configuration, regional availability, and compliance settings were reviewed and corrected before Fashion Week commenced.",
-                  result: "The application became available for French users prior to launch.",
+                  issue: "Late in deployment, the app hit an App Store availability issue affecting France, days before a France-based launch.",
+                  fix: "App Store configuration, regional availability, and compliance settings were corrected before Fashion Week began.",
+                  result: "Available to French users before doors opened.",
                 },
-              ].map(({ title, issue, resolution, result }) => (
+              ].map(({ title, issue, fix, result }) => (
                 <div key={title} className="rounded-xl border border-[#48474c]/30 bg-[#131317] p-6">
                   <h3 className="text-base font-bold text-[#fcf8fe] mb-4" style={NAV_FONT}>{title}</h3>
                   <p className="text-sm text-[#acaab0] leading-relaxed mb-2" style={BODY_FONT}>
                     <strong className="text-[#fcf8fe]">Issue:</strong> {issue}
                   </p>
                   <p className="text-sm text-[#acaab0] leading-relaxed mb-2" style={BODY_FONT}>
-                    <strong className="text-[#fcf8fe]">Resolution:</strong> {resolution}
+                    <strong className="text-[#fcf8fe]">Fix:</strong> {fix}
                   </p>
                   <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>
                     <strong className="text-[#fcf8fe]">Result:</strong> {result}
@@ -322,46 +269,72 @@ export default function Page() {
             </div>
           </section>
 
-          {/* ── Results ──────────────────────────────────────────────────── */}
+          {/* ── Retrospective ──────────────────────────── */}
           <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>Results</h2>
-            <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              The platform launched successfully for Paris Fashion Week Menswear SS27. Outcomes included:
-            </p>
-            <ul className="space-y-3">
-              <CheckItem>Successfully deployed to the Apple App Store</CheckItem>
-              <CheckItem>Live production support during Fashion Week</CheckItem>
-              <CheckItem>100+ active users onboarded</CheckItem>
-              <CheckItem>Real-time coordination between talent and operational teams</CheckItem>
-              <CheckItem>Continuous production improvements throughout the week</CheckItem>
-              <CheckItem>Interest from additional agencies exploring similar operational platforms</CheckItem>
-            </ul>
-          </section>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>Retrospective</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-6 leading-snug" style={NAV_FONT}>
+              What I&apos;d do differently
+            </h2>
 
-          {/* ── Lessons Learned ──────────────────────────────────────────── */}
-          <section className="py-14 border-b border-[#1f1f25]">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>Lessons Learned</h2>
-            <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
-              Building software for live events requires a fundamentally different mindset than building traditional enterprise applications.
-            </p>
-
-            <div className="bg-[#ba9eff]/10 border-l-4 border-[#ba9eff] p-6 rounded-r-xl mb-6">
-              <p className="text-[#acaab0] leading-relaxed italic" style={BODY_FONT}>
-                The success of the project wasn&apos;t measured by whether the app launched. It was measured by whether coordinators, managers, and talent could depend on it while standing outside a venue with no room for failure.
-              </p>
+            <div className="divide-y divide-[#1f1f25]">
+              {[
+                {
+                  title: "Plan for live production support from day one, not as a contingency.",
+                  body: "This wasn't a normal post-launch bug cycle. Fashion Week started days after launch, which meant triage had to happen in real time, in production, with no buffer. I'd build that expectation, and the on-call capacity for it, into the plan from the start next time, instead of discovering it under pressure.",
+                },
+                {
+                  title: "Treat access control as v1 scope, always.",
+                  body: "This one held up. Building permissions in from day one instead of retrofitting them was the right call, and it's the one decision I wouldn't revisit even under more time pressure.",
+                },
+                {
+                  title: "Respect the \u201cboring\u201d operational workflows. They're the real product.",
+                  body: "The talent app is what people see and screenshot. The operations console is what actually determined whether the week ran smoothly. I'd protect coordinator tooling even more aggressively next time, since that's where a breakdown compounds fastest.",
+                },
+              ].map(({ title, body }) => (
+                <div key={title} className="py-5">
+                  <h4 className="text-sm font-semibold text-[#fcf8fe] mb-2" style={NAV_FONT}>{title}</h4>
+                  <p className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>{body}</p>
+                </div>
+              ))}
             </div>
 
-            <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              The engagement reinforced a principle that continues to guide TechAviatorLabs: shipping software is only half the job. The other half is supporting it when real people depend on it.
+            <p className="mt-8 text-[#acaab0] leading-relaxed" style={BODY_FONT}>
+              Check out the{" "}
+              <a
+                href="https://apps.apple.com/us/app/jendaya/id6773907783"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#ba9eff] underline hover:text-[#34b5fa] transition-colors"
+              >
+                app
+              </a>
+              {" "}for yourself.
             </p>
           </section>
 
-          {/* ── Technology Stack ─────────────────────────────────────────── */}
+          {/* ── Tech Stack ────────────────────────────── */}
           <section className="py-14">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>Technology Stack</h2>
-            <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              A modern iOS and web stack with real-time data sync, role-based access control, and QR-based check-in infrastructure, deployed through a continuous integration and App Store release pipeline.
-            </p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>Tech stack</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-6 leading-snug" style={NAV_FONT}>
+              How it&apos;s built
+            </h2>
+
+            <dl className="space-y-3">
+              {[
+                { label: "Frontend", value: "Next.js, React" },
+                { label: "Native iOS", value: "Swift, Xcode, Capacitor (for shared web-based flows alongside native UI)" },
+                { label: "Database", value: "Managed real-time database with a relational data model" },
+                { label: "Access & Check-In", value: "Role-Based Access Control (RBAC), QR Code Infrastructure" },
+                { label: "CI/CD & Distribution", value: "Continuous integration pipeline with automated App Store delivery" },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex flex-col sm:flex-row sm:gap-6">
+                  <dt className="text-xs font-bold uppercase tracking-widest text-[#76757a] sm:w-40 flex-shrink-0 pt-0.5" style={NAV_FONT}>
+                    {label}
+                  </dt>
+                  <dd className="text-sm text-[#acaab0] leading-relaxed" style={BODY_FONT}>{value}</dd>
+                </div>
+              ))}
+            </dl>
           </section>
 
           </div>

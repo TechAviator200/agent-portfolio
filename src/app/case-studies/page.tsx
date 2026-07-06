@@ -10,8 +10,8 @@ const JD_CASE_IMG_2 = "/jendaya-case-study-2.png";
 const JD_CASE_IMG_3 = "/jendaya-case-study-3.png";
 const JD_CASE_IMG_4 = "/jendaya-case-study-4.png";
 
-// All Case Studies list thumbnail
-const JD_IMG_2 = "/jendaya-qr-checkin.png";
+// All Case Studies list thumbnail collage
+const JD_LOGO = "/jendaya-logo.png";
 
 const caseStudies = [
   {
@@ -33,7 +33,7 @@ const caseStudies = [
     categoryColor: "#34b5fa",
     desc: "How a two-sided iOS platform, talent navigation and an operations console, kept Paris Fashion Week talent and coordinators in sync in real time, with production fixes made live during the event.",
     href: "https://apps.apple.com/us/app/jendaya/id6773907783",
-    image: JD_IMG_2,
+    images: [JD_LOGO, JD_CASE_IMG_1, JD_CASE_IMG_2, JD_CASE_IMG_3],
     tags: ["Fashion Tech", "Real-Time Systems", "iOS"],
     stats: [{ label: "Active Users", value: "100+" }, { label: "Deployment", value: "Live" }],
     external: true,
@@ -141,15 +141,29 @@ export default function Page() {
             {caseStudies.map((cs, i) => {
               const cardClassName = "group block relative overflow-hidden rounded-xl bg-[#131317] border border-[#48474c]/15 hover:border-[#ba9eff]/30 transition-all duration-500 shadow-2xl";
               const cardContent = (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div className={`grid grid-cols-1 md:grid-cols-2 gap-0 ${cs.images ? "md:h-[590px]" : ""}`}>
                   {/* Image */}
-                  <div className={`relative h-64 md:h-auto overflow-hidden ${i % 2 === 1 ? "md:order-last" : ""}`}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={cs.image}
-                      alt={cs.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                    />
+                  <div className={`relative h-64 overflow-hidden ${cs.images ? "md:h-full" : "md:h-auto"} ${i % 2 === 1 ? "md:order-last" : ""}`}>
+                    {cs.images ? (
+                      <div className="grid grid-cols-2 grid-rows-2 h-full w-full gap-0.5">
+                        {cs.images.map((img) => (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            key={img}
+                            src={img}
+                            alt={cs.title}
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={cs.image}
+                        alt={cs.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      />
+                    )}
                     <div className={`absolute inset-0 ${i % 2 === 0 ? "bg-gradient-to-r from-transparent to-[#131317]" : "bg-gradient-to-l from-transparent to-[#131317]"}`} />
                   </div>
 

@@ -94,6 +94,54 @@ export default function Page() {
 
           {/* 3-Column Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {/* JENDAYA — client case study, not a self-hosted demo agent */}
+            <a
+              href="https://apps.apple.com/us/app/jendaya/id6773907783"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-[#131317] rounded-xl p-8 border border-[#48474c]/15 hover:border-[#34b5fa]/30 transition-all duration-500 flex flex-col h-full shadow-2xl"
+            >
+              {/* Icon + Badge row */}
+              <div className="mb-6 flex justify-between items-start">
+                <div className="w-12 h-12 rounded-lg bg-[#34b5fa]/20 flex items-center justify-center text-[#34b5fa]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                </div>
+                <span className="px-3 py-1 rounded-full bg-[#34b5fa]/10 text-[#34b5fa] text-[10px] font-bold tracking-widest uppercase border border-[#34b5fa]/20" style={NAV_FONT}>
+                  Case Study
+                </span>
+              </div>
+
+              {/* Title + Description */}
+              <div className="mb-auto">
+                <h3 className="text-2xl font-bold mb-3 text-[#fcf8fe]" style={NAV_FONT}>JENDAYA</h3>
+                <p className="text-[#acaab0] mb-6 leading-relaxed text-sm" style={BODY_FONT}>
+                  A two-sided iOS platform for Paris Fashion Week: real-time talent navigation and an operations console for event coordinators.
+                </p>
+              </div>
+
+              {/* Tags + Image */}
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {["fashion tech", "real-time", "iOS"].map((tag) => (
+                    <span key={tag} className="px-2 py-1 rounded-md bg-[#25252b] text-[#acaab0] text-[10px] font-medium" style={NAV_FONT}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="h-40 rounded-xl overflow-hidden mt-4 border-2 border-[#fdd703]/70">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/jendaya-logo.png"
+                    alt="JENDAYA app logo"
+                    className="w-full h-full object-cover transition-all duration-700"
+                  />
+                </div>
+              </div>
+            </a>
+
             {agents.map((agent) => {
               const cfg = cardConfig[agent.slug];
               if (!cfg) return null;
@@ -140,52 +188,6 @@ export default function Page() {
                 </Link>
               );
             })}
-
-            {/* JENDAYA — client case study, not a self-hosted demo agent */}
-            <Link
-              href="/agents/jendaya/case-study"
-              className="group relative bg-[#131317] rounded-xl p-8 border border-[#48474c]/15 hover:border-[#34b5fa]/30 transition-all duration-500 flex flex-col h-full shadow-2xl"
-            >
-              {/* Icon + Badge row */}
-              <div className="mb-6 flex justify-between items-start">
-                <div className="w-12 h-12 rounded-lg bg-[#34b5fa]/20 flex items-center justify-center text-[#34b5fa]">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                  </svg>
-                </div>
-                <span className="px-3 py-1 rounded-full bg-[#34b5fa]/10 text-[#34b5fa] text-[10px] font-bold tracking-widest uppercase border border-[#34b5fa]/20" style={NAV_FONT}>
-                  Case Study
-                </span>
-              </div>
-
-              {/* Title + Description */}
-              <div className="mb-auto">
-                <h3 className="text-2xl font-bold mb-3 text-[#fcf8fe]" style={NAV_FONT}>JENDAYA</h3>
-                <p className="text-[#acaab0] mb-6 leading-relaxed text-sm" style={BODY_FONT}>
-                  A two-sided iOS platform for Paris Fashion Week: real-time talent navigation and an operations console for event coordinators.
-                </p>
-              </div>
-
-              {/* Tags + Image */}
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2">
-                  {["fashion tech", "real-time", "iOS"].map((tag) => (
-                    <span key={tag} className="px-2 py-1 rounded-md bg-[#25252b] text-[#acaab0] text-[10px] font-medium" style={NAV_FONT}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="h-40 rounded-xl overflow-hidden mt-4">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/jendaya-qr-checkin.png"
-                    alt="JENDAYA QR check-in screen"
-                    className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700"
-                  />
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
       </main>

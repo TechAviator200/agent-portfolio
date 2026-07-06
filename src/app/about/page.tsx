@@ -26,9 +26,9 @@ export default function Page() {
       <main className="pt-28 pb-24">
         <div className="max-w-7xl mx-auto px-8 py-12">
           {/* Hero */}
-          <header className="mb-20 relative">
-            <div className="absolute -top-20 right-0 w-96 h-64 bg-[#ba9eff]/8 rounded-full blur-[120px] pointer-events-none" />
-            <div className="relative max-w-4xl">
+          <header className="mb-20 relative text-center">
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-64 bg-[#ba9eff]/8 rounded-full blur-[120px] pointer-events-none" />
+            <div className="relative max-w-4xl mx-auto">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#34b5fa] mb-4" style={NAV_FONT}>
                 About Us
               </p>
@@ -39,7 +39,7 @@ export default function Page() {
                 </span>
                 {" "}We Will Build It.
               </h1>
-              <p className="text-lg text-[#acaab0] leading-relaxed max-w-2xl" style={BODY_FONT}>
+              <p className="text-lg text-[#acaab0] leading-relaxed max-w-2xl mx-auto" style={BODY_FONT}>
                 We build AI-powered products and agentic systems that solve real problems across media &amp; entertainment, enterprise, and healthcare &amp; life sciences. From agent architecture to production deployment, we design and ship end-to-end systems that automate complex workflows and deliver measurable outcomes.
               </p>
             </div>

@@ -110,7 +110,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <span className="px-3 py-1 rounded-full bg-[#34b5fa]/10 text-[#34b5fa] text-[10px] font-bold tracking-widest uppercase border border-[#34b5fa]/20" style={NAV_FONT}>
-                  Case Study
+                  Live
                 </span>
               </div>
 
@@ -136,7 +136,7 @@ export default function Page() {
                   <img
                     src="/jendaya-logo.png"
                     alt="JENDAYA app logo"
-                    className="w-full h-full object-cover transition-all duration-700"
+                    className="w-full h-full object-cover scale-125 grayscale group-hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
               </div>

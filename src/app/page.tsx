@@ -4,7 +4,8 @@ import MobileNav from "@/components/MobileNav";
 const NAV_FONT = { fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif" };
 const BODY_FONT = { fontFamily: "var(--font-manrope), Manrope, sans-serif" };
 
-const HERO_IMAGE = "/homepage-hero.png";
+const HERO_VIDEO = "/techaviatorlabs-hero.mp4";
+const HERO_POSTER = "/techaviatorlabs-hero-poster.jpg";
 const MEDIA_IMAGE = "/radioboy-hero.png";
 const ENTERPRISE_IMAGE = "/enterprise-hero.png";
 const HEALTHCARE_IMAGE = "/healthcare-hero.png";
@@ -103,10 +104,14 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[#ba9eff]/10 rounded-full blur-[120px]" />
                 <div className="relative z-10 h-full rounded-xl border border-[#48474c]/20 overflow-hidden shadow-2xl group"
                   style={{ background: "rgba(19, 19, 23, 0.6)", backdropFilter: "blur(20px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={HERO_IMAGE}
-                    alt="AI System Diagram"
+                  <video
+                    src={HERO_VIDEO}
+                    poster={HERO_POSTER}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                   />
                 </div>

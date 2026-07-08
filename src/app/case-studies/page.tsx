@@ -84,7 +84,7 @@ export default function Page() {
                 </h2>
 
                 <p className="text-[#acaab0] text-lg leading-relaxed mb-10 max-w-xl" style={BODY_FONT}>
-                  How I built a two-way OS for a London creative agency during Paris Fashion Week. Two connected systems, a talent app and an operations console, kept in sync in real time during one of the most demanding weeks in fashion. Deployed live at Paris Fashion Week Menswear SS27, with production fixes shipped mid-event.
+                  How I built a two-way OS for a London creative agency during Paris Fashion Week.
                 </p>
 
                 <div className="grid grid-cols-3 gap-8 mb-12">

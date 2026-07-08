@@ -94,16 +94,16 @@ export default function Page() {
           <section className="py-14 border-b border-[#1f1f25]">
             <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>The problem</p>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
-              Talent needed to move fast. The team behind them needed to see everything.
+              You can&apos;t run Fashion Week out of a group chat.
             </h2>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              JENDAYA, a London-based creative agency, came to TechAviatorLabs with a challenge specific to Paris Fashion Week Menswear SS27, but familiar to anyone who&apos;s run a large live event.
+              Ask anyone who&apos;s coordinated a live international event, and they&apos;ll tell you the same thing: the schedule doesn&apos;t stop moving. Talent needs to know where to be. Coordinators need to know who&apos;s where. Everything runs on visibility, and when visibility lives across a dozen messaging threads and a spreadsheet, things start to break.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              Their talent needed a reliable way to check schedules, navigate between shows, check in at venues, and submit content, often on unreliable networks, mid-city, between events that could shift with no warning.
+              That&apos;s the challenge JENDAYA, a London-based creative agency, brought to TechAviatorLabs ahead of Paris Fashion Week Menswear SS27. They needed one system their talent could rely on, and another their operations team could actually run the week from. They needed both, connected and operational, before Fashion Week started.
             </p>
             <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              Behind them, coordinators and managers needed visibility into all of it: who was assigned where, what had been approved, what was changing day-of. Before this project, that visibility lived across messaging apps, spreadsheets, and manual coordination. At Fashion Week scale, that&apos;s not an inconvenience, it&apos;s where things start to break.
+              A good live event platform should meet talent where they are and give the team behind them a single view of what&apos;s actually happening. That&apos;s what we built.
             </p>
           </section>
 
@@ -111,13 +111,13 @@ export default function Page() {
           <section className="py-14 border-b border-[#1f1f25]">
             <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>What we built</p>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
-              Two connected experiences, one shared view
+              Two connected experiences, one shared view.
             </h2>
             <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
               We built the JENDAYA platform as two connected experiences, kept in sync in real time so an operational change on one side showed up instantly on the other.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              <strong className="text-[#fcf8fe]">The Talent Experience</strong> is a native iOS app that gives talent their personalized schedule, event navigation, QR check-in, content upload, Plus One requests, and role-specific access, everything they need to move through Fashion Week without missing a beat.
+              <strong className="text-[#fcf8fe]">The Talent Experience</strong> is a native iOS app that gives talent their personalized schedule, event navigation, QR check-in, content upload, Plus One requests, and role-specific access. Everything they needed to navigate a week where schedules changed hourly and timing mattered.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
               <strong className="text-[#fcf8fe]">The Operations Console</strong> is the platform behind the scenes, where coordinators assign talent to events, manage teams, approve requests, moderate content, and coordinate the logistics of a live international event in real time.
@@ -141,19 +141,22 @@ export default function Page() {
           <section className="py-14 border-b border-[#1f1f25]">
             <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>How we approached it</p>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
-              No room for a second attempt
+              Fashion Week doesn&apos;t do &ldquo;we&apos;ll fix it next sprint.&rdquo;
             </h2>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              Fashion Week has no &ldquo;we&apos;ll fix it next sprint.&rdquo; The launch date couldn&apos;t move, and the event itself started days after the app went live. That meant every decision, what to build, what to defer, what to protect, had to be made with real people standing outside real venues in mind.
+              The launch date couldn&apos;t move. The event itself started days after the app went live. Every decision we made, what to build, what to defer, what to protect, had to hold up with real people standing outside real venues.
+            </p>
+            <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
+              Here&apos;s how we thought about it.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              We prioritized reliability over feature count. The workflows that mattered most (schedules, check-ins, and assignments) were built to be rock-solid before anything else was added. Talent-facing extras that would have been nice to have got deferred so the core operational spine stayed steady.
+              <strong className="text-[#fcf8fe]">Reliability beats feature count.</strong> The workflows that mattered most (schedules, check-ins, and assignments) needed to be rock-solid before anything else. Nice-to-have features waited. A good live event platform doesn&apos;t try to do everything on day one, it tries to do the critical few things flawlessly.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              We designed for two very different audiences on one platform. Talent and agency staff needed access to very different things, and getting that right from day one, instead of retrofitting it later, was foundational.
+              <strong className="text-[#fcf8fe]">Two audiences, one platform, from the start.</strong> Talent and agency staff needed access to very different things, so we built role-based permissions in from day one instead of retrofitting them later. A good platform for events like this should never treat access control as an afterthought, since the whole thing runs on trust.
             </p>
             <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
-              We planned for live production support, not just launch. From the moment the app went live, our team stayed on to support JENDAYA through Fashion Week itself, watching how the system held up under real usage and iterating as needed.
+              <strong className="text-[#fcf8fe]">Launch is the start of the job, not the end.</strong> From the moment the app went live, our team stayed on to support JENDAYA through Fashion Week itself. When something needed adjusting mid-event, we adjusted it. A good partner for a live deployment doesn&apos;t hand you the keys and walk away, they stay in the room.
             </p>
           </section>
 
@@ -164,10 +167,10 @@ export default function Page() {
               It held up when real people depended on it
             </h2>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              The JENDAYA platform launched successfully on the Apple App Store and served over 100 active users during Paris Fashion Week Menswear SS27. Coordinators had a single operational view of a week they used to run out of group chats and spreadsheets. Talent had a reliable app in their pocket for one of the most fast-moving weeks in fashion.
+              The JENDAYA platform launched successfully on the Apple App Store and served over 100 active users during Paris Fashion Week Menswear SS27. Coordinators gained a single operational view of a week they used to run out of group chats and spreadsheets. Talent had a reliable app in their pocket for a week that wouldn&apos;t sit still.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
-              More importantly, the platform did what it was built to do: it held up when real people depended on it, in a city they didn&apos;t live in, at an event that couldn&apos;t wait.
+              More importantly, the platform did exactly what it was built to do. It held up when real people depended on it, in a city they didn&apos;t live in, during one of the busiest weeks in fashion.
             </p>
             <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
               Check out the{" "}

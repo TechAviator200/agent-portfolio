@@ -100,7 +100,7 @@ export default function Page() {
               Ask anyone who&apos;s coordinated a live international event, and they&apos;ll tell you the same thing: the schedule doesn&apos;t stop moving. Talent needs to know where to be. Coordinators need to know who&apos;s where. Everything runs on visibility, and when visibility lives across a dozen messaging threads and a spreadsheet, things start to break.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              That&apos;s the challenge JENDAYA, a London-based creative agency, brought to TechAviatorLabs ahead of Paris Fashion Week Menswear SS27. They needed one system their talent could rely on, and another their operations team could actually run the week from. They needed both, connected and operational, before Fashion Week started.
+              That&apos;s the challenge JENDAYA, a London-based creative agency, brought to TechAviatorLabs ahead of Paris Fashion Week Menswear SS27. They needed one integrated system that talent could rely on to inform them of their schedule, and also one that provided the operational structure for their internal team to run events. They needed both, connected and operational, before Fashion Week started.
             </p>
             <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
               A good live event platform should meet talent where they are and give the team behind them a single view of what&apos;s actually happening. That&apos;s what we built.
@@ -114,19 +114,19 @@ export default function Page() {
               Two connected experiences, one shared view.
             </h2>
             <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
-              We built the JENDAYA platform as two connected experiences, kept in sync in real time so an operational change on one side showed up instantly on the other.
+              We built the JENDAYA platform as two connected experiences, kept in sync in real time so any operational change on one side showed up instantly on the other.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              <strong className="text-[#fcf8fe]">The Talent Experience</strong> is a native iOS app that gives talent their personalized schedule, event navigation, QR check-in, content upload, Plus One requests, and role-specific access. Everything they needed to navigate a week where schedules changed hourly and timing mattered.
+              <strong className="text-[#fcf8fe]">The Talent Experience</strong> is a native iOS app that gives talent their personalized schedule, event navigation, QR check-in, content upload, Plus One requests, and role-specific access. This experience provides each user everything they needed to navigate a week where schedules changed hourly and timing mattered.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
-              <strong className="text-[#fcf8fe]">The Operations Console</strong> is the platform behind the scenes, where coordinators assign talent to events, manage teams, approve requests, moderate content, and coordinate the logistics of a live international event in real time.
+              <strong className="text-[#fcf8fe]">The Operations Console</strong> is the platform&apos;s &ldquo;behind the scenes&rdquo;, where coordinators assign talent to events, manage teams, approve requests, moderate content, and coordinate the logistics of a live international event in real time.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-4">
               {[
                 { metric: "100+", desc: "Active users onboarded during Fashion Week" },
-                { metric: "2-sided", desc: "Talent app and operations console, kept in real-time sync" },
+                { metric: "2-sided", desc: "Talent app and operations console, with live updates" },
                 { metric: "Live", desc: "Deployed during Paris Fashion Week Menswear SS27" },
               ].map(({ metric, desc }) => (
                 <div key={metric} className="rounded-xl border border-[#48474c]/30 bg-[#131317] p-5">
@@ -144,7 +144,7 @@ export default function Page() {
               Fashion Week doesn&apos;t do &ldquo;we&apos;ll fix it next sprint.&rdquo;
             </h2>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              The launch date couldn&apos;t move. The event itself started days after the app went live. Every decision we made, what to build, what to defer, what to protect, had to hold up with real people standing outside real venues.
+              In building the app, we understood that the launch date couldn&apos;t move, so every decision we made, such as what to build, key components of the app for the user experience, and how to manage user data, was considered so it didn&apos;t break IRL.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-6" style={BODY_FONT}>
               Here&apos;s how we thought about it.
@@ -153,7 +153,7 @@ export default function Page() {
               <strong className="text-[#fcf8fe]">Reliability beats feature count.</strong> The workflows that mattered most (schedules, check-ins, and assignments) needed to be rock-solid before anything else. Nice-to-have features waited. A good live event platform doesn&apos;t try to do everything on day one, it tries to do the critical few things flawlessly.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              <strong className="text-[#fcf8fe]">Two audiences, one platform, from the start.</strong> Talent and agency staff needed access to very different things, so we built role-based permissions in from day one instead of retrofitting them later. A good platform for events like this should never treat access control as an afterthought, since the whole thing runs on trust.
+              <strong className="text-[#fcf8fe]">Designed for the moment, not the demo.</strong> People using the app during Fashion Week weren&apos;t sitting at a desk. They were between venues, in cars, in crowds, on shaky connections. Every screen had to answer the question they were already asking: where do I need to be next, what changed, who&apos;s meeting me there. A good live event app should get out of the way, then be exactly where you need it, when you need it.
             </p>
             <p className="text-[#acaab0] leading-relaxed" style={BODY_FONT}>
               <strong className="text-[#fcf8fe]">Launch is the start of the job, not the end.</strong> From the moment the app went live, our team stayed on to support JENDAYA through Fashion Week itself. When something needed adjusting mid-event, we adjusted it. A good partner for a live deployment doesn&apos;t hand you the keys and walk away, they stay in the room.
@@ -164,10 +164,10 @@ export default function Page() {
           <section className="py-14 border-b border-[#1f1f25]">
             <p className="text-xs font-bold uppercase tracking-widest text-[#76757a] mb-3" style={NAV_FONT}>The result</p>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#fcf8fe] mb-5 leading-snug" style={NAV_FONT}>
-              It held up when real people depended on it
+              One time deployment with 100+ users
             </h2>
             <p className="text-[#acaab0] leading-relaxed mb-4" style={BODY_FONT}>
-              The JENDAYA platform launched successfully on the Apple App Store and served over 100 active users during Paris Fashion Week Menswear SS27. Coordinators gained a single operational view of a week they used to run out of group chats and spreadsheets. Talent had a reliable app in their pocket for a week that wouldn&apos;t sit still.
+              The JENDAYA platform launched successfully on the Apple App Store and served over 100 active users during Paris Fashion Week Menswear SS27. Coordinators gained a tech-backed operational view of their week, which was previously managed in spreadsheets and group chats. Talent had a reliable app in their pocket for a week that wouldn&apos;t sit still.
             </p>
             <p className="text-[#acaab0] leading-relaxed mb-8" style={BODY_FONT}>
               More importantly, the platform did exactly what it was built to do. It held up when real people depended on it, in a city they didn&apos;t live in, during one of the busiest weeks in fashion.

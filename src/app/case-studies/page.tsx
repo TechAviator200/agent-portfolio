@@ -77,14 +77,14 @@ export default function Page() {
                 </div>
 
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={NAV_FONT}>
-                  <span className="text-white">It Has to Work.</span> <br />
+                  <span className="text-white">It Has to Work.</span>{" "}
                   <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #ba9eff 0%, #34b5fa 100%)" }}>
                     It Can&apos;t Break IRL.
                   </span>
                 </h2>
 
                 <p className="text-[#acaab0] text-lg leading-relaxed mb-10 max-w-xl" style={BODY_FONT}>
-                  How I built a two-way OS for a London creative agency during Paris Fashion Week.
+                  How we built a two-way OS for a London creative agency during Paris Fashion Week.
                 </p>
 
                 <div className="grid grid-cols-3 gap-8 mb-12">
